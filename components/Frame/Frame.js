@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-import styles from "./Frame.module.css";
-
 function Frame({ images }) {
 	const [index, setIndex] = useState(0);
 
@@ -18,11 +16,11 @@ function Frame({ images }) {
 		}, 5000);
 
 		return () => clearInterval(timer);
-	}, []);
+	}, [images.length]);
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.frame}>
+		<div className="img-card col-left">
+			<div className="frame">
 				<Image
 					src={images[index].src}
 					alt={images[index].alt}
@@ -30,7 +28,7 @@ function Frame({ images }) {
 					height={300}
 				/>
 			</div>
-			<div className={styles.caption}>{images[index].alt}</div>
+			<div className="caption">{images[index].alt}</div>
 		</div>
 	);
 }

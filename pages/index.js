@@ -1,12 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 
 import Header from "../components/Header/Header";
+import Links from "../components/Links/Links";
 
 export default function Home() {
 	return (
-		<div className={styles.container}>
+		<div className="container">
 			<Head>
 				<title>Christian Peterson</title>
 				<meta
@@ -17,6 +16,14 @@ export default function Home() {
 			</Head>
 
 			<Header></Header>
+			<Links></Links>
+			<h2>bio</h2>
+			<p>
+				I'm a student at the University of Arizona, majoring in Computer
+				Science with a minor in Music. In my freetime, I make music,
+				read, play video games, and bike. Join me on my journey!
+			</p>
+			<h2>blog</h2>
 		</div>
 	);
 }

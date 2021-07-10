@@ -1,8 +1,6 @@
 import React from "react";
-import Image from "next/image";
 
 import Frame from "../Frame/Frame";
-import styles from "./Header.module.css";
 
 const images = [
 	{
@@ -21,12 +19,12 @@ const images = [
 
 function Header() {
 	return (
-		<div className={styles.container}>
-			<header className={styles.header}>
+		<div className="header">
+			<Frame images={images} />
+			<div>
 				<h1>Christian Peterson</h1>
 				<h4>Software Engineer</h4>
-			</header>
-			<Frame images={images} />
+			</div>
 		</div>
 	);
 }

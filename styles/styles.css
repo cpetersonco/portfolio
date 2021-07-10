@@ -1,0 +1,61 @@
+html,
+body {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 650px;
+	margin: 50px auto;
+	padding: 5px;
+}
+
+.links {
+	padding: 20px 0px;
+}
+
+.links a {
+	color: red;
+}
+
+.links a:not(:last-child) {
+	padding: 0 12px 0 0;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.col-left {
+	margin-right: 30px;
+}
+
+.img-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.frame {
+	width: 300px;
+	height: 300px;
+	margin: 0 0 10px 0;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.caption {
+	font-size: smaller;
+	font-weight: lighter;
+}
