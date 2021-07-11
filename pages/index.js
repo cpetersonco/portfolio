@@ -1,9 +1,14 @@
 import Head from "next/head";
+import Link from "next/link";
+import Prismic from "prismic-javascript";
 
 import Header from "../components/Header/Header";
 import Links from "../components/Links/Links";
 
-export default function Home() {
+import { client } from "../prismic-configuration";
+
+export default function Home({ posts }) {
+	console.log(posts);
 	return (
 		<div className="container">
 			<Head>
@@ -24,6 +29,28 @@ export default function Home() {
 				read, play video games, and bike. Join me on my journey!
 			</p>
 			<h2>blog</h2>
+			<ul>
+				{posts &&
+					posts.map((post, i) => (
+						<li key={i}>
+							<Link href={`/posts/${post.uid}`}>
+								{post.data.title[0].text}
+							</Link>
+						</li>
+					))}
+			</ul>
 		</div>
 	);
+}
+
+export async function getStaticProps() {
+	const posts = await client.query(
+		Prismic.Predicates.at("document.type", "post"),
+		{ orderings: "[my.post.date desc]" }
+	);
+	return {
+		props: {
+			posts: posts.results,
+		},
+	};
 }

@@ -59,3 +59,18 @@ body {
 	font-size: smaller;
 	font-weight: lighter;
 }
+
+.breadcrumb {
+	margin: 0;
+	display: flex;
+	padding: 0;
+	flex-wrap: wrap;
+	list-style: none;
+	align-items: center;
+}
+
+.breadcrumb-separator {
+	display: flex;
+	margin-left: 8px;
+	margin-right: 8px;
+}
