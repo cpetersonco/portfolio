@@ -4,6 +4,7 @@ import Prismic from "prismic-javascript";
 
 import Header from "../components/Header/Header";
 import Links from "../components/Links/Links";
+import PostPreview from "../components/PostPreview/PostPreview";
 
 import { client } from "../prismic-configuration";
 
@@ -29,16 +30,18 @@ export default function Home({ posts }) {
 				read, play video games, and bike. Join me on my journey!
 			</p>
 			<h2>blog</h2>
-			<ul>
+			<div className="card-container">
 				{posts &&
 					posts.map((post, i) => (
-						<li key={i}>
-							<Link href={`/posts/${post.uid}`}>
-								{post.data.title[0].text}
-							</Link>
-						</li>
+						<PostPreview
+							key={post.uid}
+							title={post.data.title[0].text}
+							href={`/posts/${post.slugs[0]}`}
+							preview={post.data.description}
+							date={post.data.date}
+						></PostPreview>
 					))}
-			</ul>
+			</div>
 		</div>
 	);
 }
