@@ -5,11 +5,14 @@ import Prismic from "prismic-javascript";
 import Header from "../components/Header/Header";
 import Links from "../components/Links/Links";
 import PostPreview from "../components/PostPreview/PostPreview";
+import ProjectCard from "../components/ProjectCard/ProjectCard";
+import projects from "../constants/projects";
 
 import { client } from "../prismic-configuration";
 
 export default function Home({ posts }) {
-	console.log(posts);
+	console.log(projects);
+
 	return (
 		<div className="container">
 			<Head>
@@ -32,17 +35,30 @@ export default function Home({ posts }) {
 			<h2>blog</h2>
 			<div className="card-container">
 				{posts &&
-					posts.map((post, i) => (
+					posts.map((post) => (
 						<PostPreview
 							key={post.uid}
 							title={post.data.title[0].text}
 							href={`/posts/${post.uid}`}
 							preview={post.data.description}
 							date={post.data.date}
-						></PostPreview>
+						/>
 					))}
 			</div>
 			<Link href="/posts">See all posts</Link>
+			<h2>projects</h2>
+			<div className="card-container">
+				{projects &&
+					projects.map((project) => (
+						<ProjectCard
+							key={project.title}
+							title={project.title}
+							subtitle={project.tech}
+							description={project.description}
+							link={project.link}
+						/>
+					))}
+			</div>
 		</div>
 	);
 }

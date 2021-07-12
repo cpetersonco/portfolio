@@ -1,15 +1,17 @@
 import React from "react";
-import Link from "next/link";
 import { RichText } from "prismic-reactjs";
+
+import Card from "../Card/Card";
 
 function PostPreview({ title, href, preview, date }) {
 	return (
-		<div className="card">
-			<h2>{title}</h2>
-			<sub>{date}</sub>
-			<p>{RichText.render(preview)}</p>
-			<Link href={href}>Read more...</Link>
-		</div>
+		<Card
+			title={title}
+			subtitle={new Date(date).toLocaleDateString()}
+			content={RichText.render(preview)}
+			link={href}
+			isExternal={false}
+		/>
 	);
 }
 
