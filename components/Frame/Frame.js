@@ -24,8 +24,8 @@ function Frame({ images }) {
 				<Image
 					src={images[index].src}
 					alt={images[index].alt}
-					width={300}
-					height={300}
+					width={200}
+					height={200}
 				/>
 			</div>
 			<div className="caption">{images[index].alt}</div>

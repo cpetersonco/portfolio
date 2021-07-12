@@ -5,11 +5,10 @@ import { RichText } from "prismic-reactjs";
 function PostPreview({ title, href, preview, date }) {
 	return (
 		<div className="card">
-			<div className="card-title">
-				<Link href={href}>{title}</Link>
-			</div>
-			{date}
-			{RichText.render(preview)}
+			<h2>{title}</h2>
+			<sub>{date}</sub>
+			<p>{RichText.render(preview)}</p>
+			<Link href={href}>Read more...</Link>
 		</div>
 	);
 }

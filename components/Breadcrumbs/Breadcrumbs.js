@@ -34,14 +34,14 @@ const Breadcrumbs = () => {
 				</li>
 				{breadcrumbs.map((breadcrumb) => {
 					return (
-						<>
+						<React.Fragment key={breadcrumb.href}>
 							<li className="breadcrumb-separator">/</li>
 							<li key={breadcrumb.href}>
 								<Link href={breadcrumb.href}>
 									<a>{breadcrumb.breadcrumb}</a>
 								</Link>
 							</li>
-						</>
+						</React.Fragment>
 					);
 				})}
 			</ol>

@@ -4,15 +4,15 @@ import Frame from "../Frame/Frame";
 
 const images = [
 	{
-		src: "/profile.jpg",
+		src: "/profile.jpeg",
 		alt: "Christian looking stoically into the camera",
 	},
 	{
-		src: "/chess.jpg",
+		src: "/chess.jpeg",
 		alt: "Christian being dark and broody at a chess board",
 	},
 	{
-		src: "/blue_steel.jpg",
+		src: "/blue_steel.jpeg",
 		alt: "Christian doing his best Blue Steel",
 	},
 ];
