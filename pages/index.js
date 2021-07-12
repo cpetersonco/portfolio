@@ -24,7 +24,7 @@ export default function Home({ posts }) {
 			<Header></Header>
 			<Links></Links>
 			<h2>bio</h2>
-			<p>
+			<p className="bio">
 				I'm a student at the University of Arizona, majoring in Computer
 				Science with a minor in Music. In my freetime, I make music,
 				read, play video games, and bike. Join me on my journey!
@@ -36,12 +36,13 @@ export default function Home({ posts }) {
 						<PostPreview
 							key={post.uid}
 							title={post.data.title[0].text}
-							href={`/posts/${post.slugs[0]}`}
+							href={`/posts/${post.uid}`}
 							preview={post.data.description}
 							date={post.data.date}
 						></PostPreview>
 					))}
 			</div>
+			<Link href="/posts">See all posts</Link>
 		</div>
 	);
 }
@@ -49,7 +50,7 @@ export default function Home({ posts }) {
 export async function getStaticProps() {
 	const posts = await client.query(
 		Prismic.Predicates.at("document.type", "post"),
-		{ orderings: "[my.post.date desc]" }
+		{ orderings: "[my.post.date desc]", pageSize: 4 }
 	);
 	return {
 		props: {

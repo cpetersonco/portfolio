@@ -1,17 +1,17 @@
 import React from "react";
-import { client } from "../../prismic-configuration";
 import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
+
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import { client } from "../../prismic-configuration";
 
 export default function Post({ data }) {
-	console.log(data);
 	return (
 		<div className="container">
 			<Breadcrumbs></Breadcrumbs>
 			<article>
-				<h2>{RichText.asText(data.title)}</h2>
-				<main>{RichText.render(data.post_body)}</main>
+				<h2>{RichText.asText(data?.title)}</h2>
+				<main>{RichText.render(data?.post_body)}</main>
 			</article>
 		</div>
 	);
