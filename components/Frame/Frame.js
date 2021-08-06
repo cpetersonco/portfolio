@@ -1,5 +1,23 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import Image from "next/image";
+import chess from "../../public/chess.jpg";
+import blueSteel from "../../public/blue_steel.jpg";
+import profile from "../../public/profile.jpg";
+
+const images = [
+	{
+		src: profile,
+		alt: "Christian looking stoically into the camera",
+	},
+	{
+		src: chess,
+		alt: "Christian being dark and broody at a chess board",
+	},
+	{
+		src: blueSteel,
+		alt: "Christian doing his best Blue Steel",
+	},
+];
 
 function Frame({ images }) {
 	const [index, incrementIndex] = useReducer((prev) => {
@@ -18,14 +36,14 @@ function Frame({ images }) {
 		<div className="img-card col-left">
 			<div className="frame">
 				<Image
-					src={images[index].src}
-					alt={images[index].alt}
+					src={profile}
+					alt={images[0].alt}
 					width={200}
 					height={200}
 					priority={true}
+					placeholder={"blur"}
 				/>
 			</div>
-			<div className="caption">{images[index].alt}</div>
 		</div>
 	);
 }
