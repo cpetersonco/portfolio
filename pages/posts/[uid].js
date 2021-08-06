@@ -9,14 +9,12 @@ import { client } from "../../prismic-configuration";
 
 export default function Post({ data }) {
 	const { asPath } = useRouter();
-	console.log({ data });
 	const title = data?.title[0].text;
 	const description = data?.description[0].text;
 	return (
 		<div className="container">
 			<NextSeo
-				title={title}
-				titleTemplate="%s | Christian Peterson"
+				title={`${title} | Christian Peterson`}
 				description={description}
 				openGraph={{
 					url: `https://www.cdpeterson.dev${asPath}`,
