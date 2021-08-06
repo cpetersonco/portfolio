@@ -1,6 +1,6 @@
-import Head from "next/head";
 import Link from "next/link";
 import Prismic from "prismic-javascript";
+import { NextSeo } from "next-seo";
 
 import Frame from "../components/Frame/Frame";
 import PostPreview from "../components/PostPreview/PostPreview";
@@ -14,58 +14,37 @@ import { client } from "../prismic-configuration";
 export default function Home({ posts }) {
 	return (
 		<div className="container">
-			<Head>
-				<title>Christian Peterson</title>
-				<meta
-					name="description"
-					content="Christian Peterson, Software Engineer."
-				/>
-				{/* TWITTER */}
-				<meta name="twitter:card" content="summary" />
-				<meta name="twitter:title" content="Christian Peterson" />
-				<meta
-					name="twitter:description"
-					content="Christian Peterson, Software Engineer."
-				/>
-				<meta
-					name="twitter:image"
-					content="http://www.cdpeterson.dev/profile.jpg"
-				/>
-				<meta property="og:title" content="Christian Peterson" />
-				<meta property="og:url" content="https://cdpeterson.dev/" />
-				<meta
-					property="og:image"
-					content="http://www.cdpeterson.dev/profile.jpg"
-				/>
-				<meta
-					property="og:description"
-					content="Christian Peterson, Software Engineer."
-				/>
-				<meta property="og:site_name" content="Christian Peterson" />
-				<meta
-					name="viewport"
-					content="initial-scale=1.0, width=device-width"
-				/>
-				<meta charSet="UTF-8" />
-				<link
-					rel="apple-touch-icon"
-					sizes="180x180"
-					href="/apple-touch-icon.png"
-				/>
-				<link
-					rel="icon"
-					type="image/png"
-					sizes="32x32"
-					href="/favicon-32x32.png"
-				/>
-				<link
-					rel="icon"
-					type="image/png"
-					sizes="16x16"
-					href="/favicon-16x16.png"
-				/>
-			</Head>
-
+			<NextSeo
+				title="Christian Peterson"
+				description="Christian Peterson, Software Engineer."
+				canonical="https://www.cdpeterson.dev/"
+				openGraph={{
+					url: "https://www.cdpeterson.dev/",
+					title: "Christian Peterson",
+					description: "Christian Peterson, Software Engineer.",
+					images: [{ url: "https://www.cdpeterson.dev/profile.jpg" }],
+					site_name: "Christian Peterson",
+				}}
+				additionalLinkTags={[
+					{
+						rel: "icon",
+						type: "image/png",
+						sizes: "32x32",
+						href: "/favicon-32x32.png",
+					},
+					{
+						rel: "icon",
+						type: "image/png",
+						sizes: "16x16",
+						href: "/favicon-16x16.png",
+					},
+					{
+						rel: "apple-touch-icon",
+						href: "/apple-touch-icon.png",
+						sizes: "180x180",
+					},
+				]}
+			/>
 			<div className="header">
 				<Frame images={images} />
 				<div>
