@@ -16,6 +16,10 @@ export default function Home({ posts }) {
 		<div className="container">
 			<Head>
 				<title>Christian Peterson</title>
+				<meta
+					name="description"
+					content="Christian Peterson, Software Engineer."
+				/>
 				{/* TWITTER */}
 				<meta name="twitter:card" content="summary" />
 				<meta name="twitter:title" content="Christian Peterson" />
@@ -27,7 +31,6 @@ export default function Home({ posts }) {
 					name="twitter:image"
 					content="http://www.cdpeterson.dev/profile.jpg"
 				/>
-				{/* OPEN GRAPH */}
 				<meta property="og:title" content="Christian Peterson" />
 				<meta property="og:url" content="https://cdpeterson.dev/" />
 				<meta
@@ -39,6 +42,11 @@ export default function Home({ posts }) {
 					content="Christian Peterson, Software Engineer."
 				/>
 				<meta property="og:site_name" content="Christian Peterson" />
+				<meta
+					name="viewport"
+					content="initial-scale=1.0, width=device-width"
+				/>
+				<meta charset="UTF-8" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
