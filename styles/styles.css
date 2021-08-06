@@ -49,14 +49,13 @@ nav {
 	padding: 5px 30px;
 }
 
-.links {
+.links-container {
 	width: auto;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	flex-wrap: wrap;
 	padding: 20px 0px;
-	margin: 0px 30px;
 	height: 30px;
 }
 
