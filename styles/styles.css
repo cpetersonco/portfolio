@@ -90,6 +90,7 @@ nav {
 
 .caption {
 	margin-top: 10px;
+	min-height: 30px;
 	font-size: smaller;
 	font-weight: lighter;
 	text-align: center;
