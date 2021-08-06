@@ -30,7 +30,7 @@ const Breadcrumbs = () => {
 		<nav aria-label="breadcrumbs">
 			<ol className="breadcrumb">
 				<li>
-					<a href="/">home</a>
+					<Link href="/">home</Link>
 				</li>
 				{breadcrumbs.map((breadcrumb) => {
 					return (

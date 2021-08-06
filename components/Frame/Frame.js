@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import Image from "next/image";
 
 function Frame({ images }) {
-	const [index, setIndex] = useState(0);
+	const [index, incrementIndex] = useReducer((prev) => {
+		return (prev + 1) % images.length;
+	}, 0);
 
 	useEffect(() => {
 		let timer = setInterval(function () {
-			setIndex((prev) => {
-				if (prev >= images.length - 1) {
-					return 0;
-				} else {
-					return prev + 1;
-				}
-			});
+			incrementIndex();
 		}, 5000);
 
 		return () => clearInterval(timer);
-	}, [images.length]);
+	}, []);
 
 	return (
 		<div className="img-card col-left">
@@ -26,6 +22,7 @@ function Frame({ images }) {
 					alt={images[index].alt}
 					width={200}
 					height={200}
+					priority={true}
 				/>
 			</div>
 			<div className="caption">{images[index].alt}</div>

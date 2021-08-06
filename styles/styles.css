@@ -1,7 +1,7 @@
 :root {
 	--text-color: #333;
 	--main-bg-color: #fbfbf2;
-	--card-bg-color: #e5e6e4;
+	--card-bg-color: #f1f1ea;
 	--link-main-color: #ed6a5a;
 	--link-hover-color: #f18c7e;
 }
@@ -19,6 +19,7 @@ body {
 a {
 	color: var(--link-main-color);
 	text-decoration: none;
+	padding: 5px;
 }
 
 a:hover {
@@ -32,6 +33,10 @@ p {
 
 h3 {
 	margin: 10px 0px 8px 0px;
+}
+
+nav {
+	float: left;
 }
 
 .container {
@@ -52,7 +57,7 @@ h3 {
 	flex-wrap: wrap;
 	padding: 20px 0px;
 	margin: 0px 30px;
-	height: 25px;
+	height: 30px;
 }
 
 .links a:not(:last-child) {

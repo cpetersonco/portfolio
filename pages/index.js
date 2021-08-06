@@ -2,17 +2,16 @@ import Head from "next/head";
 import Link from "next/link";
 import Prismic from "prismic-javascript";
 
-import Header from "../components/Header/Header";
-import Links from "../components/Links/Links";
+import Frame from "../components/Frame/Frame";
 import PostPreview from "../components/PostPreview/PostPreview";
 import ProjectCard from "../components/ProjectCard/ProjectCard";
+
 import projects from "../constants/projects";
+import images from "../constants/images";
 
 import { client } from "../prismic-configuration";
 
 export default function Home({ posts }) {
-	console.log(projects);
-
 	return (
 		<div className="container">
 			<Head>
@@ -24,13 +23,35 @@ export default function Home({ posts }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header></Header>
-			<Links></Links>
-			<h2>bio</h2>
+			<div className="header">
+				<Frame images={images} />
+				<div>
+					<h1>Christian Peterson</h1>
+					<h3>Software Engineer</h3>
+				</div>
+			</div>
+			<div className="links">
+				<a href="https://www.linkedin.com/in/ChristianUA/">LinkedIn</a>
+				<a href="https://github.com/ChristianUA">Github</a>
+				<a href="https://christian-blog.cdn.prismic.io/christian-blog/457d41f6-846f-4bce-8b73-12b7d9fd9b71_Christian+Peterson+-+Resume.pdf">
+					Resume
+				</a>
+			</div>
 			<p className="bio">
-				I'm a student at the University of Arizona, majoring in Computer
-				Science with a minor in Music. In my freetime, I make music,
-				read, play video games, and bike. Join me on my journey!
+				<b>Hi there, I&apos;m Christian!</b> I&apos;m a student at the
+				University of Arizona, majoring in Computer Science with a minor
+				in Music with plans to graduate in December 2021.
+			</p>
+			<p className="bio">
+				I&apos;m currently looking for a junior software developer gig
+				for December/January. I have multiple previous internship
+				experiences and I&apos;ve included some of my passion projects
+				below. I&apos;m passionate about creating meaningful user
+				experiences on the web!
+			</p>
+			<p className="bio">
+				In my freetime, I love to make music, play chess, and read.
+				Follow along on my journey through my blog!
 			</p>
 			<h2>blog</h2>
 			<div className="card-container">
@@ -56,6 +77,7 @@ export default function Home({ posts }) {
 							subtitle={project.tech}
 							description={project.description}
 							link={project.link}
+							repo={project.repo}
 						/>
 					))}
 			</div>

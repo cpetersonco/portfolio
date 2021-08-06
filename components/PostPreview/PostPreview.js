@@ -9,7 +9,7 @@ function PostPreview({ title, href, preview, date }) {
 			title={title}
 			subtitle={new Date(date).toLocaleDateString()}
 			content={RichText.render(preview)}
-			link={href}
+			links={[{ text: "See more...", link: href }]}
 			isExternal={false}
 		/>
 	);

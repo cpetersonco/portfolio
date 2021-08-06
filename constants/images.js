@@ -1,14 +1,14 @@
 const images = [
 	{
-		src: "/profile.jpeg",
+		src: "/profile.jpg",
 		alt: "Christian looking stoically into the camera",
 	},
 	{
-		src: "/chess.jpeg",
+		src: "/chess.jpg",
 		alt: "Christian being dark and broody at a chess board",
 	},
 	{
-		src: "/blue_steel.jpeg",
+		src: "/blue_steel.jpg",
 		alt: "Christian doing his best Blue Steel",
 	},
 ];

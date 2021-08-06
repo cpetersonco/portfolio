@@ -10,8 +10,10 @@ export default function Post({ data }) {
 		<div className="container">
 			<Breadcrumbs></Breadcrumbs>
 			<article>
-				<h2>{RichText.asText(data.title)}</h2>
-				<main>{RichText.render(data.post_body)}</main>
+				<h2>{data?.title && RichText.asText(data.title)}</h2>
+				<main>
+					{data?.post_body && RichText.render(data.post_body)}
+				</main>
 			</article>
 		</div>
 	);
