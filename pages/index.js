@@ -1,15 +1,13 @@
 import Link from "next/link";
 import Prismic from "prismic-javascript";
 import { NextSeo } from "next-seo";
-
-import Frame from "../components/Frame/Frame";
-import PostPreview from "../components/PostPreview/PostPreview";
-import ProjectCard from "../components/ProjectCard/ProjectCard";
-
-import projects from "../constants/projects";
-import images from "../constants/images";
+import Image from "next/image";
 
 import { client } from "../prismic-configuration";
+import PostPreview from "../components/PostPreview/PostPreview";
+import ProjectCard from "../components/ProjectCard/ProjectCard";
+import projects from "../constants/projects";
+import profile from "../public/profile.jpg";
 
 export default function Home({ posts }) {
 	return (
@@ -46,7 +44,18 @@ export default function Home({ posts }) {
 				]}
 			/>
 			<div className="header">
-				<Frame images={images} />
+				<div className="img-card col-left">
+					<div className="frame">
+						<Image
+							src={profile}
+							alt="Picture of Christian"
+							width={200}
+							height={200}
+							priority={true}
+							placeholder={"blur"}
+						/>
+					</div>
+				</div>
 				<div>
 					<h1>Christian Peterson</h1>
 					<h2>Software Engineer</h2>
