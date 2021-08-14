@@ -19,7 +19,7 @@ body {
 a {
 	color: var(--link-main-color);
 	text-decoration: none;
-	padding: 5px;
+	/* padding: 5px; */
 }
 
 a:hover {
@@ -49,7 +49,7 @@ nav {
 	padding: 5px 30px;
 }
 
-.links-container {
+.center {
 	width: auto;
 	display: flex;
 	justify-content: flex-start;
@@ -59,8 +59,8 @@ nav {
 	height: 30px;
 }
 
-.links a:not(:last-child) {
-	margin: 0 12px 0 0;
+.links-container a {
+	padding: 5px;
 }
 
 .header {

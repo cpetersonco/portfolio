@@ -61,7 +61,7 @@ export default function Home({ posts }) {
 					<h2>Software Engineer</h2>
 				</div>
 			</div>
-			<div className="links-container">
+			<div className="center links-container">
 				<a href="https://www.linkedin.com/in/ChristianUA/">LinkedIn</a>
 				<a href="https://github.com/ChristianUA">Github</a>
 				<a href="https://christian-blog.cdn.prismic.io/christian-blog/457d41f6-846f-4bce-8b73-12b7d9fd9b71_Christian+Peterson+-+Resume.pdf">

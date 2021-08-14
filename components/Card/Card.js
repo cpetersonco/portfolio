@@ -14,7 +14,7 @@ function Card({ title, content, links, subtitle, isExternal }) {
 			{title && <h3>{title}</h3>}
 			{subtitle && <sub>{subtitle}</sub>}
 			{content && <div>{content}</div>}
-			<div className="right-justify">
+			<div className="links-container right-justify ">
 				{links &&
 					(isExternal
 						? links.map(({ link, text }) => (
