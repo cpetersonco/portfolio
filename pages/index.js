@@ -1,5 +1,6 @@
 import Link from "next/link";
-import Prismic from "prismic-javascript";
+import * as Prismic from "@prismicio/client";
+import { RichText } from "prismic-reactjs";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 
@@ -9,7 +10,7 @@ import ProjectCard from "../components/ProjectCard/ProjectCard";
 import projects from "../constants/projects";
 import profile from "../public/profile.jpg";
 
-export default function Home({ posts }) {
+export default function Home({ posts, homepage }) {
 	return (
 		<div className="container">
 			<NextSeo
@@ -20,7 +21,7 @@ export default function Home({ posts }) {
 					url: "https://www.cdpeterson.dev/",
 					title: "Christian Peterson",
 					description: "Christian Peterson, Software Engineer.",
-					images: [{ url: "https://www.cdpeterson.dev/profile.jpg" }],
+					images: [{ url: "https://www.cpeterson.co/profile.jpg" }],
 					site_name: "Christian Peterson",
 				}}
 				additionalLinkTags={[
@@ -68,28 +69,14 @@ export default function Home({ posts }) {
 					Resume
 				</a>
 			</div>
-			<p className="bio">
-				<b>Hi there, I&apos;m Christian!</b> I&apos;m a student at the
-				University of Arizona, majoring in Computer Science with a minor
-				in Music with plans to graduate in December 2021.
-			</p>
-			<p className="bio">
-				I&apos;m currently looking for a junior software developer gig
-				for December/January. I have multiple previous internship
-				experiences and I&apos;ve included some of my passion projects
-				below. I&apos;m passionate about creating meaningful user
-				experiences on the web!
-			</p>
-			<p className="bio">
-				In my freetime, I love to make music, play chess, and read.
-				Follow along on my journey through my blog!
-			</p>
+			<RichText render={homepage.title} />
+			<RichText render={homepage.content} />
 			<h2>blog</h2>
 			<div className="card-container">
 				{posts &&
 					posts.map((post) => (
 						<PostPreview
-							key={post.uid}
+							key={post.id}
 							title={post.data.title[0].text}
 							href={`/posts/${post.uid}`}
 							preview={post.data.description}
@@ -115,18 +102,18 @@ export default function Home({ posts }) {
 						/>
 					))}
 			</div>
+			<RichText render={homepage.footer} />
 		</div>
 	);
 }
 
 export async function getStaticProps() {
-	const posts = await client.query(
-		Prismic.Predicates.at("document.type", "post"),
-		{ orderings: "[my.post.date desc]", pageSize: 4 }
-	);
+	const posts = await client.getByType("post");
+	const homepage = await client.getSingle("homepage");
 	return {
 		props: {
 			posts: posts.results,
+			homepage: homepage.data,
 		},
 	};
 }
