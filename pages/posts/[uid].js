@@ -1,7 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
-import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
@@ -63,9 +62,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-	const { results } = await client.query(
-		Prismic.Predicates.at("document.type", "post")
-	);
+	const { results } = await client.getByType("post");
 
 	const paths = results.map((post) => ({
 		params: {

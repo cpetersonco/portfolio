@@ -1,6 +1,5 @@
 import React from "react";
 import { client } from "../../prismic-configuration";
-import Prismic from "prismic-javascript";
 import { NextSeo } from "next-seo";
 
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
@@ -56,10 +55,7 @@ export default function Posts({ posts }) {
 }
 
 export async function getStaticProps() {
-	const posts = await client.query(
-		Prismic.Predicates.at("document.type", "post"),
-		{ orderings: "[my.post.date desc]" }
-	);
+	const posts = await client.getByType("post");
 	return {
 		props: {
 			posts: posts.results,
