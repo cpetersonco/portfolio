@@ -7,10 +7,9 @@ import Image from "next/image";
 import { client } from "../prismic-configuration";
 import PostPreview from "../components/PostPreview/PostPreview";
 import ProjectCard from "../components/ProjectCard/ProjectCard";
-import projects from "../constants/projects";
 import profile from "../public/profile.jpg";
 
-export default function Home({ posts, homepage, heroLinks }) {
+export default function Home({ posts, homepage, heroLinks, projects }) {
 	return (
 		<div className="container">
 			<NextSeo
@@ -72,7 +71,6 @@ export default function Home({ posts, homepage, heroLinks }) {
 							</a>
 						);
 					})}
-				{/* <RichText render={heroLinks} /> */}
 			</div>
 			<RichText render={homepage.content} />
 			<h2>blog</h2>
@@ -95,14 +93,15 @@ export default function Home({ posts, homepage, heroLinks }) {
 			<h2>projects</h2>
 			<div className="card-container">
 				{projects &&
-					projects.map((project) => (
+					projects.body &&
+					projects.body.map((project, i) => (
 						<ProjectCard
-							key={project.title}
-							title={project.title}
-							subtitle={project.tech}
-							description={project.description}
-							link={project.link}
-							repo={project.repo}
+							key={i}
+							title={project.primary.label[0].text}
+							subtitle={project.primary.tech[0].text}
+							description={project.primary.description[0].text}
+							link={project.primary.link.url}
+							repo={project.primary.repo.url}
 						/>
 					))}
 			</div>
@@ -115,12 +114,14 @@ export async function getStaticProps() {
 	const posts = await client.getByType("post");
 	const homepage = await client.getSingle("homepage");
 	const heroLinks = await client.getSingle("hero_links");
-	console.log(heroLinks.data);
+	const projects = await client.getSingle("projects");
+	console.log(projects.data.body[0].primary);
 	return {
 		props: {
 			posts: posts.results,
 			homepage: homepage.data,
 			heroLinks: heroLinks.data,
+			projects: projects.data,
 		},
 	};
 }
