@@ -10,7 +10,7 @@ import ProjectCard from "../components/ProjectCard/ProjectCard";
 import projects from "../constants/projects";
 import profile from "../public/profile.jpg";
 
-export default function Home({ posts, homepage }) {
+export default function Home({ posts, homepage, heroLinks }) {
 	return (
 		<div className="container">
 			<NextSeo
@@ -63,13 +63,17 @@ export default function Home({ posts, homepage }) {
 				</div>
 			</div>
 			<div className="center links-container">
-				<a href="https://www.linkedin.com/in/ChristianUA/">LinkedIn</a>
-				<a href="https://github.com/ChristianUA">Github</a>
-				<a href="https://christian-blog.cdn.prismic.io/christian-blog/457d41f6-846f-4bce-8b73-12b7d9fd9b71_Christian+Peterson+-+Resume.pdf">
-					Resume
-				</a>
+				{heroLinks &&
+					heroLinks.body &&
+					heroLinks.body.map((link, i) => {
+						return (
+							<a key={i} href={link.primary.link.url}>
+								{RichText.asText(link.primary.label)}
+							</a>
+						);
+					})}
+				{/* <RichText render={heroLinks} /> */}
 			</div>
-			<RichText render={homepage.title} />
 			<RichText render={homepage.content} />
 			<h2>blog</h2>
 			<div className="card-container">
@@ -110,10 +114,13 @@ export default function Home({ posts, homepage }) {
 export async function getStaticProps() {
 	const posts = await client.getByType("post");
 	const homepage = await client.getSingle("homepage");
+	const heroLinks = await client.getSingle("hero_links");
+	console.log(heroLinks.data);
 	return {
 		props: {
 			posts: posts.results,
 			homepage: homepage.data,
+			heroLinks: heroLinks.data,
 		},
 	};
 }
