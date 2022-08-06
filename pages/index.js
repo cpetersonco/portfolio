@@ -76,20 +76,15 @@ export default function Home({ posts, homepage, heroLinks, projects }) {
 			<h2>blog</h2>
 			<div className="card-container">
 				{posts &&
-					posts
-						// .sort(
-						// 	(a, b) =>
-						// 		new Date(b.data.date) - new Date(a.data.date)
-						// )
-						.map((post) => (
-							<PostPreview
-								key={post.id}
-								title={post.data.title[0].text}
-								href={`/posts/${post.uid}`}
-								preview={post.data.description}
-								date={post.data.date}
-							/>
-						))}
+					posts.map((post) => (
+						<PostPreview
+							key={post.id}
+							title={post.data.title[0].text}
+							href={`/posts/${post.uid}`}
+							preview={post.data.description}
+							date={post.data.date}
+						/>
+					))}
 			</div>
 			<div className="links-container">
 				<Link href="/posts">See all posts</Link>
@@ -116,7 +111,12 @@ export default function Home({ posts, homepage, heroLinks, projects }) {
 }
 
 export async function getStaticProps() {
-	const posts = await client.getByType("post");
+	const posts = await client.getByType("post", {
+		orderings: {
+			field: "date",
+			direction: "desc",
+		},
+	});
 	const homepage = await client.getSingle("homepage");
 	const heroLinks = await client.getSingle("hero_links");
 	const projects = await client.getSingle("projects");
