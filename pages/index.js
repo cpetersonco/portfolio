@@ -15,9 +15,9 @@ export default function Home({ posts, homepage, heroLinks, projects }) {
 			<NextSeo
 				title="Christian Peterson"
 				description="Christian Peterson, Software Engineer."
-				canonical="https://www.cdpeterson.dev/"
+				canonical="https://www.cpeterson.co"
 				openGraph={{
-					url: "https://www.cdpeterson.dev/",
+					url: "https://www.cpeterson.co",
 					title: "Christian Peterson",
 					description: "Christian Peterson, Software Engineer.",
 					images: [{ url: "https://www.cpeterson.co/profile.jpg" }],
@@ -76,15 +76,20 @@ export default function Home({ posts, homepage, heroLinks, projects }) {
 			<h2>blog</h2>
 			<div className="card-container">
 				{posts &&
-					posts.map((post) => (
-						<PostPreview
-							key={post.id}
-							title={post.data.title[0].text}
-							href={`/posts/${post.uid}`}
-							preview={post.data.description}
-							date={post.data.date}
-						/>
-					))}
+					posts
+						// .sort(
+						// 	(a, b) =>
+						// 		new Date(b.data.date) - new Date(a.data.date)
+						// )
+						.map((post) => (
+							<PostPreview
+								key={post.id}
+								title={post.data.title[0].text}
+								href={`/posts/${post.uid}`}
+								preview={post.data.description}
+								date={post.data.date}
+							/>
+						))}
 			</div>
 			<div className="links-container">
 				<Link href="/posts">See all posts</Link>
@@ -115,7 +120,6 @@ export async function getStaticProps() {
 	const homepage = await client.getSingle("homepage");
 	const heroLinks = await client.getSingle("hero_links");
 	const projects = await client.getSingle("projects");
-	console.log(projects.data.body[0].primary);
 	return {
 		props: {
 			posts: posts.results,
