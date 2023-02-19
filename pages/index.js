@@ -120,7 +120,7 @@ export default function Home({ posts }) {
 				time, I make music, read, play video games, and watch movies.
 				Join me on my journey!
 			</p>
-			<h1>experience</h1>
+			<h1 className="section">experience</h1>
 			<ul className="experiences">
 				<li data-icon="🦄">
 					<strong>Software Engineer</strong> at{" "}
@@ -147,7 +147,7 @@ export default function Home({ posts }) {
 					<span className="subtext">(June 2017 - May 2021)</span>
 				</li>
 			</ul>
-			<h1>blog</h1>
+			<h1 className="section">blog</h1>
 			<div className="post-previews">
 				{posts &&
 					posts.map((post) => {
@@ -187,7 +187,7 @@ export default function Home({ posts }) {
 						);
 					})}
 			</div>
-			<h1>projects</h1>
+			<h1 className="section">projects</h1>
 			<div className="project-previews" k>
 				{projects &&
 					projects.map((project, i) => {

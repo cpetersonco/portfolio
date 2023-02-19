@@ -27,8 +27,20 @@ p {
 }
 
 @media (max-width: 580px) {
-	h1 {
+	.section {
 		text-align: center;
+	}
+
+	.title {
+		text-align: center;
+	}
+
+	.title h1 {
+		margin-bottom: 10px;
+	}
+
+	.title h2 {
+		margin-top: 0px;
 	}
 }
 
