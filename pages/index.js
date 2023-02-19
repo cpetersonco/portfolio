@@ -26,7 +26,7 @@ export default function Home({ posts }) {
 			link: "https://pokemon.cpeterson.co",
 			repo: "https://github.com/ChristianUA/pokemon-tracker",
 			description:
-				"Catch 'em all! Search and capture pokemon using the PokeAPI.",
+				"Catch &apos;em all! Search and capture pokemon using the PokeAPI.",
 			backgroundColor: "#ffca3a",
 		},
 		{
@@ -105,8 +105,8 @@ export default function Home({ posts }) {
 			</header>
 
 			<p>
-				<strong>Hi there, I'm Christian!</strong> I'm a Software
-				Engineer working at{" "}
+				<strong>Hi there, I&apos;m Christian!</strong> I&apos;m a
+				Software Engineer working at{" "}
 				<a className="link" href="https://www.benefitfocus.com/">
 					Benefitfocus
 				</a>
@@ -115,10 +115,10 @@ export default function Home({ posts }) {
 				Science, my passion for programming began with web development,
 				and has since expanded into various areas of software
 				development. I enjoy building full-stack web applications with
-				an emphasis on user experience. I'm excited to continue growing
-				my skillset and exploring new technologies. In my free time, I
-				make music, read, play video games, and watch movies. Join me on
-				my journey!
+				an emphasis on user experience. I&apos;m excited to continue
+				growing my skillset and exploring new technologies. In my free
+				time, I make music, read, play video games, and watch movies.
+				Join me on my journey!
 			</p>
 			<h1>experience</h1>
 			<ul className="experiences">
