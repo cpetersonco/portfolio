@@ -5,4 +5,7 @@ module.exports = {
 		defaultLocale: "en",
 	},
 	swcMinify: true,
+	images: {
+		domains: ["images.prismic.io"],
+	},
 };
