@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -30,16 +31,18 @@ const Breadcrumbs = () => {
 		<nav aria-label="breadcrumbs">
 			<ol className="breadcrumb">
 				<li>
-					<Link href="/">home</Link>
+					<a className="link" href="/">
+						home
+					</a>
 				</li>
 				{breadcrumbs.map((breadcrumb) => {
 					return (
 						<React.Fragment key={breadcrumb.href}>
 							<li className="breadcrumb-separator">/</li>
-							<li key={breadcrumb.href}>
-								<Link href={breadcrumb.href}>
-									<a>{breadcrumb.breadcrumb}</a>
-								</Link>
+							<li>
+								<a className="link" href={breadcrumb.href}>
+									{breadcrumb.breadcrumb}
+								</a>
 							</li>
 						</React.Fragment>
 					);

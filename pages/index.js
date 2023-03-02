@@ -1,13 +1,9 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import * as Prismic from "@prismicio/client";
 import { RichText } from "prismic-reactjs";
 import { NextSeo } from "next-seo";
-import Image from "next/image";
 
 import { client } from "../prismic-configuration";
-import profile from "../public/profile.jpg";
 
 export default function Home({ posts }) {
 	const projects = [
@@ -26,7 +22,7 @@ export default function Home({ posts }) {
 			link: "https://pokemon.cpeterson.co",
 			repo: "https://github.com/ChristianUA/pokemon-tracker",
 			description:
-				"Catch &apos;em all! Search and capture pokemon using the PokeAPI.",
+				"Catch 'em all! Search and capture pokemon using the PokeAPI.",
 			backgroundColor: "#ffca3a",
 		},
 		{
@@ -86,17 +82,17 @@ export default function Home({ posts }) {
 				<nav className="hero-links">
 					<ul>
 						<li className="hero-link">
-							<a href="/about" className="link">
+							<a href="#about" className="link">
 								about.
 							</a>
 						</li>
 						<li className="hero-link">
-							<a href="/posts" className="link">
+							<a href="#blog" className="link">
 								blog.
 							</a>
 						</li>
 						<li className="hero-link">
-							<a href="/projects" className="link">
+							<a href="#projects" className="link">
 								projects.
 							</a>
 						</li>
@@ -104,7 +100,7 @@ export default function Home({ posts }) {
 				</nav>
 			</header>
 
-			<p>
+			<p id="about">
 				<strong>Hi there, I&apos;m Christian!</strong> I&apos;m a
 				Software Engineer working at{" "}
 				<a className="link" href="https://www.benefitfocus.com/">
@@ -147,7 +143,9 @@ export default function Home({ posts }) {
 					<span className="subtext">(June 2017 - May 2021)</span>
 				</li>
 			</ul>
-			<h1 className="section">blog</h1>
+			<h1 id="blog" className="section">
+				blog
+			</h1>
 			<div className="post-previews">
 				{posts &&
 					posts.map((post) => {
@@ -187,7 +185,9 @@ export default function Home({ posts }) {
 						);
 					})}
 			</div>
-			<h1 className="section">projects</h1>
+			<h1 id="projects" className="section">
+				projects
+			</h1>
 			<div className="project-previews" k>
 				{projects &&
 					projects.map((project, i) => {
@@ -209,15 +209,6 @@ export default function Home({ posts }) {
 								style={{ backgroundColor }}
 							>
 								<article>
-									{preview_image && preview_image?.url && (
-										<span className="previewImage">
-											<img
-												src={preview_image?.url}
-												alt={preview_image?.alt}
-											></img>
-										</span>
-									)}
-
 									<header>
 										<h2>{title}</h2>
 										<subtitle>{subtitle}</subtitle>

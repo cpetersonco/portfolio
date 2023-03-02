@@ -47,25 +47,32 @@ export default function Posts({ posts }) {
 					const href = `/posts/${uid}`;
 					return (
 						<article key={id} className="post-preview">
-							<header className="card-header">
+							<section>
 								{title && (
-									<a href={href}>
+									<a className="link" href={href}>
 										<h2>{RichText.render(title)}</h2>
 									</a>
 								)}
+								{description && (
+									<p>{RichText.render(description)}</p>
+								)}
+							</section>
+							<footer>
+								<a className="link" href={href}>
+									read more
+								</a>
 								{date && (
 									<sub>
-										{new Date(date).toLocaleDateString()}
+										{new Date(date).toLocaleDateString(
+											"en-US",
+											{
+												year: "numeric",
+												month: "long",
+												day: "numeric",
+											}
+										)}
 									</sub>
 								)}
-							</header>
-							{description && (
-								<section>
-									<p>{RichText.render(description)}</p>
-								</section>
-							)}
-							<footer>
-								<a href={href}>Read more</a>
 							</footer>
 						</article>
 					);
