@@ -14,7 +14,7 @@ export default function Home({ posts }) {
 			repo: "https://github.com/ChristianUA/notes",
 			description:
 				"A note taking app featuring email authentication and note creation using the open source Quill editor",
-			backgroundColor: "#1982c4",
+			backgroundColor: "#38A3E5",
 		},
 		{
 			title: "Pokemon Tracker",
@@ -32,7 +32,7 @@ export default function Home({ posts }) {
 			repo: "https://github.com/ChristianUA/Loft-Cinema-API",
 			description:
 				"A publically-served iCal calendar for the local cinema, Loft Cinema.",
-			backgroundColor: "#ff595e",
+			backgroundColor: "#FF6B70",
 		},
 	];
 
@@ -157,12 +157,11 @@ export default function Home({ posts }) {
 								<section>
 									{title && (
 										<a className="link" href={href}>
-											<h2>{RichText.render(title)}</h2>
+											{RichText.render(title)}
 										</a>
 									)}
-									{description && (
-										<p>{RichText.render(description)}</p>
-									)}
+									{description &&
+										RichText.render(description)}
 								</section>
 								<footer>
 									<a className="link" href={href}>

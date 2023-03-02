@@ -50,11 +50,11 @@ export default function Posts({ posts }) {
 							<section>
 								{title && (
 									<a className="link" href={href}>
-										<h2>{RichText.render(title)}</h2>
+										{RichText.render(title)}
 									</a>
 								)}
 								{description && (
-									<p>{RichText.render(description)}</p>
+									<>{RichText.render(description)}</>
 								)}
 							</section>
 							<footer>
