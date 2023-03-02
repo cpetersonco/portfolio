@@ -155,11 +155,11 @@ p {
 	margin-top: 0;
 }
 
-.post-preview > section {
+.post-preview section {
 	font-size: .9rem;
 }
 
-.post-preview > footer {
+.post-preview footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -196,6 +196,7 @@ a:visited {
 }
 
 .project-preview {
+	margin: 0;
 	padding: 30px;
 	color: var(--text-color);
 	text-decoration: none;
@@ -211,6 +212,21 @@ a:visited {
 .project-preview:visited  {
 	text-decoration: none;
 	color: var(--text-color);
+}
+
+.project-preview h1 {
+	font-size: 1.5rem;
+	margin-top: 0;
+}
+
+.project-preview section {
+	font-size: .9rem;
+}
+
+.project-preview footer {
+	display: flex;
+	justify-content: right;
+	align-items: center;
 }
 
 /* Experiences */

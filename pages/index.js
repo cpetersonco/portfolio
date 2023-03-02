@@ -154,12 +154,14 @@ export default function Home({ posts }) {
 						const href = `/posts/${uid}`;
 						return (
 							<article key={id} className="post-preview">
-								<section>
+								<header>
 									{title && (
 										<a className="link" href={href}>
 											{RichText.render(title)}
 										</a>
 									)}
+								</header>
+								<section>
 									{description &&
 										RichText.render(description)}
 								</section>
@@ -209,12 +211,14 @@ export default function Home({ posts }) {
 							>
 								<article>
 									<header>
-										<h2>{title}</h2>
-										<subtitle>{subtitle}</subtitle>
+										<h1>{title}</h1>
 									</header>
 									<section>
 										<p>{description}</p>
 									</section>
+									<footer>
+										<sub>{subtitle}</sub>
+									</footer>
 								</article>
 							</a>
 						);
