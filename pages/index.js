@@ -1,15 +1,41 @@
-import Link from "next/link";
-import * as Prismic from "@prismicio/client";
+/* eslint-disable @next/next/no-html-link-for-pages */
+/* eslint-disable @next/next/no-img-element */
 import { RichText } from "prismic-reactjs";
 import { NextSeo } from "next-seo";
-import Image from "next/image";
 
 import { client } from "../prismic-configuration";
-import PostPreview from "../components/PostPreview/PostPreview";
-import ProjectCard from "../components/ProjectCard/ProjectCard";
-import profile from "../public/profile.jpg";
 
-export default function Home({ posts, homepage, heroLinks, projects }) {
+export default function Home({ posts }) {
+	const projects = [
+		{
+			title: "Notes",
+			subtitle: "React, Firebase, etc.",
+			link: "https://notes.cpeterson.co",
+			repo: "https://github.com/ChristianUA/notes",
+			description:
+				"A note taking app featuring email authentication and note creation using the open source Quill editor",
+			backgroundColor: "#38A3E5",
+		},
+		{
+			title: "Pokemon Tracker",
+			subtitle: "React, REST API, etc.",
+			link: "https://pokemon.cpeterson.co",
+			repo: "https://github.com/ChristianUA/pokemon-tracker",
+			description:
+				"Catch 'em all! Search and capture pokemon using the PokeAPI.",
+			backgroundColor: "#ffca3a",
+		},
+		{
+			title: "Loft Cinema Web Calendar",
+			subtitle: "Node.js, Cheerio, axios, ics",
+			link: "webcal://loft.cpeterson.co/event.ics",
+			repo: "https://github.com/ChristianUA/Loft-Cinema-API",
+			description:
+				"A publically-served iCal calendar for the local cinema, Loft Cinema.",
+			backgroundColor: "#FF6B70",
+		},
+	];
+
 	return (
 		<div className="container">
 			<NextSeo
@@ -43,69 +69,192 @@ export default function Home({ posts, homepage, heroLinks, projects }) {
 					},
 				]}
 			/>
-			<div className="header">
-				<div className="img-card col-left">
+			<header className="header">
+				<div className="hero">
 					<div className="frame">
-						<Image
-							src={profile}
-							alt="Picture of Christian"
-							width={200}
-							height={200}
-							priority={true}
-							placeholder={"blur"}
-						/>
+						<img src="/profile.jpg" alt="Picture of Christian" />
+					</div>
+					<div className="title">
+						<h1>Christian Peterson</h1>
+						<h2>Software Engineer</h2>
 					</div>
 				</div>
-				<div>
-					<h1>Christian Peterson</h1>
-					<h2>Software Engineer</h2>
-				</div>
-			</div>
-			<div className="center links-container">
-				{heroLinks &&
-					heroLinks.body &&
-					heroLinks.body.map((link, i) => {
+				<nav className="hero-links">
+					<ul>
+						<li className="hero-link">
+							<a href="#about" className="link">
+								about.
+							</a>
+						</li>
+						<li className="hero-link">
+							<a href="#blog" className="link">
+								blog.
+							</a>
+						</li>
+						<li className="hero-link">
+							<a href="#projects" className="link">
+								projects.
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+			<p id="about">
+				<strong>Hi there, I&apos;m Christian!</strong> I&apos;m a
+				Software Engineer working at{" "}
+				<a className="link" href="https://www.benefitfocus.com/">
+					Benefitfocus
+				</a>
+				, a benefits management platform. A recent graduate from the
+				University of Arizona with a Bachelor of Science in Computer
+				Science, my passion for programming began with web development,
+				and has since expanded into various areas of software
+				development. I enjoy building full-stack web applications with
+				an emphasis on user experience. I&apos;m excited to continue
+				growing my skillset and exploring new technologies. In my free
+				time, I make music, read, play video games, and watch movies.
+				Join me on my journey!
+			</p>
+			<h1 className="section">experience</h1>
+			<ul className="experiences">
+				<li data-icon="🦄">
+					<strong>Software Engineer</strong> at{" "}
+					<a className="link" href="https://www.benefitfocus.com/">
+						Benefitfocus
+					</a>{" "}
+					<span className="subtext">(January 2022 - Present)</span>
+				</li>
+				<li data-icon="👶">
+					<strong>Software Engineer Intern</strong> at{" "}
+					<a className="link" href="https://www.benefitfocus.com/">
+						Benefitfocus
+					</a>{" "}
+					<span className="subtext">(May 2021 - December 2021)</span>
+				</li>
+				<li data-icon="💻">
+					<strong>Support Analyst Intern</strong> at{" "}
+					<a
+						className="link"
+						href="https://www.communitymedicalservices.org/"
+					>
+						Community Medical Services
+					</a>{" "}
+					<span className="subtext">(June 2017 - May 2021)</span>
+				</li>
+			</ul>
+			<h1 id="blog" className="section">
+				blog
+			</h1>
+			<div className="post-previews">
+				{posts &&
+					posts.map((post) => {
+						const { id, uid, data } = post;
+						const { title, description, date } = data;
+						const href = `/posts/${uid}`;
 						return (
-							<a key={i} href={link.primary.link.url}>
-								{RichText.asText(link.primary.label)}
+							<article key={id} className="post-preview">
+								<header>
+									{title && (
+										<a className="link" href={href}>
+											{RichText.render(title)}
+										</a>
+									)}
+								</header>
+								<section>
+									{description &&
+										RichText.render(description)}
+								</section>
+								<footer>
+									<a className="link" href={href}>
+										read more
+									</a>
+									{date && (
+										<sub>
+											{new Date(date).toLocaleDateString(
+												"en-US",
+												{
+													year: "numeric",
+													month: "long",
+													day: "numeric",
+												}
+											)}
+										</sub>
+									)}
+								</footer>
+							</article>
+						);
+					})}
+			</div>
+			<h1 id="projects" className="section">
+				projects
+			</h1>
+			<div className="project-previews" k>
+				{projects &&
+					projects.map((project, i) => {
+						const {
+							title,
+							subtitle,
+							repo,
+							link,
+							description,
+							preview_image,
+							backgroundColor,
+						} = project;
+
+						return (
+							<a
+								className="project-preview"
+								href={link}
+								key={i}
+								style={{ backgroundColor }}
+							>
+								<article>
+									<header>
+										<h1>{title}</h1>
+									</header>
+									<section>
+										<p>{description}</p>
+									</section>
+									<footer>
+										<sub>{subtitle}</sub>
+									</footer>
+								</article>
 							</a>
 						);
 					})}
 			</div>
-			<RichText render={homepage.content} />
-			<h2>blog</h2>
-			<div className="card-container">
-				{posts &&
-					posts.map((post) => (
-						<PostPreview
-							key={post.id}
-							title={post.data.title[0].text}
-							href={`/posts/${post.uid}`}
-							preview={post.data.description}
-							date={post.data.date}
-						/>
-					))}
-			</div>
-			<div className="links-container">
-				<Link href="/posts">See all posts</Link>
-			</div>
-
-			<h2>projects</h2>
-			<div className="card-container">
-				{projects &&
-					projects.body &&
-					projects.body.map((project, i) => (
-						<ProjectCard
-							key={i}
-							title={project.primary.label[0].text}
-							subtitle={project.primary.tech[0].text}
-							description={project.primary.description[0].text}
-							link={project.primary.link.url}
-							repo={project.primary.repo.url}
-						/>
-					))}
-			</div>
-			<RichText render={homepage.footer} />
+			<footer className="footer">
+				<nav className="hero-links">
+					<ul>
+						<li className="hero-link">
+							<a
+								className="link"
+								href="https://www.linkedin.com/in/ChristianUA/"
+							>
+								linkedin.
+							</a>
+						</li>
+						<li className="hero-link">
+							<a
+								className="link"
+								href="https://github.com/ChristianDPeterson"
+							>
+								github.
+							</a>
+						</li>
+						<li className="hero-link">
+							<a
+								className="link"
+								href="https://christian-blog.cdn.prismic.io/christian-blog/457d41f6-846f-4bce-8b73-12b7d9fd9b71_Christian+Peterson+-+Resume.pdf"
+							>
+								resume.
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<p> © {new Date().getFullYear()} by Christian Peterson.</p>
+			</footer>
 		</div>
 	);
 }
@@ -113,19 +262,13 @@ export default function Home({ posts, homepage, heroLinks, projects }) {
 export async function getStaticProps() {
 	const posts = await client.getByType("post", {
 		orderings: {
-			field: "date",
+			field: "document.first_publication_date",
 			direction: "desc",
 		},
 	});
-	const homepage = await client.getSingle("homepage");
-	const heroLinks = await client.getSingle("hero_links");
-	const projects = await client.getSingle("projects");
 	return {
 		props: {
 			posts: posts.results,
-			homepage: homepage.data,
-			heroLinks: heroLinks.data,
-			projects: projects.data,
 		},
 	};
 }

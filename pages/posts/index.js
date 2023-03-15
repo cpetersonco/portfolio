@@ -1,9 +1,9 @@
 import React from "react";
 import { client } from "../../prismic-configuration";
 import { NextSeo } from "next-seo";
+import { RichText } from "prismic-reactjs";
 
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
-import PostPreview from "../../components/PostPreview/PostPreview";
 
 export default function Posts({ posts }) {
 	return (
@@ -41,15 +41,42 @@ export default function Posts({ posts }) {
 			/>
 			<Breadcrumbs></Breadcrumbs>
 			{posts &&
-				posts.map((post, i) => (
-					<PostPreview
-						key={post.uid}
-						title={post.data.title[0].text}
-						href={`/posts/${post.uid}`}
-						preview={post.data.description}
-						date={post.data.date}
-					></PostPreview>
-				))}
+				posts.map((post) => {
+					const { id, uid, data } = post;
+					const { title, description, date } = data;
+					const href = `/posts/${uid}`;
+					return (
+						<article key={id} className="post-preview">
+							<section>
+								{title && (
+									<a className="link" href={href}>
+										{RichText.render(title)}
+									</a>
+								)}
+								{description && (
+									<>{RichText.render(description)}</>
+								)}
+							</section>
+							<footer>
+								<a className="link" href={href}>
+									read more
+								</a>
+								{date && (
+									<sub>
+										{new Date(date).toLocaleDateString(
+											"en-US",
+											{
+												year: "numeric",
+												month: "long",
+												day: "numeric",
+											}
+										)}
+									</sub>
+								)}
+							</footer>
+						</article>
+					);
+				})}
 		</div>
 	);
 }
