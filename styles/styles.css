@@ -166,12 +166,6 @@ p {
 
 /* Link */
 
-/* a {
-	color: var(--link-main-color);
-	text-decoration: none;
-	padding: 5px;
-} */
-
 a {
 	color: var(--link-main-color);
 	text-decoration-color: var(--link-main-color);
@@ -184,14 +178,6 @@ a:focus {
 	color: var(--link-hover-color);
 	text-decoration-color: var(--link-hover-color);
 }
-
-/* a:link {
-	text-decoration: none;
-} */
-
-/* a:visited {
-	text-decoration: none;
-} */
 
 /* Project Previews */
 

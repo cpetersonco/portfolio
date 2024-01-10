@@ -103,8 +103,8 @@ export default function Home({ posts }) {
 			<p id="about">
 				<strong>Hi there, I&apos;m Christian!</strong> I&apos;m a
 				Software Engineer working at{" "}
-				<a className="link" href="https://www.benefitfocus.com/">
-					Benefitfocus
+				<a className="link" href="https://www.voya.com/">
+					Voya Financial
 				</a>
 				, a benefits management platform. A recent graduate from the
 				University of Arizona with a Bachelor of Science in Computer
@@ -118,12 +118,21 @@ export default function Home({ posts }) {
 			</p>
 			<h1 className="section">experience</h1>
 			<ul className="experiences">
+				<li data-icon="👨🏻‍💻">
+					<strong>Software Developer</strong> at{" "}
+					<a className="link" href="https://www.voya.com/">
+						Voya Financial
+					</a>{" "}
+					<span className="subtext">(January 2024 - Present)</span>
+				</li>
 				<li data-icon="🦄">
-					<strong>Software Engineer</strong> at{" "}
+					<strong>Software Engineer I</strong> at{" "}
 					<a className="link" href="https://www.benefitfocus.com/">
 						Benefitfocus
 					</a>{" "}
-					<span className="subtext">(January 2022 - Present)</span>
+					<span className="subtext">
+						(January 2022 - December 2023)
+					</span>
 				</li>
 				<li data-icon="👶">
 					<strong>Software Engineer Intern</strong> at{" "}
