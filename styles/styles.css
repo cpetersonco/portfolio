@@ -2,7 +2,7 @@
 	--text-color: #333;
 	--main-bg-color: #fbfbf2;
 	--card-bg-color: #f1f1ea;
-	--link-main-color: #DA311B;
+	--link-main-color: #da311b;
 	--link-hover-color: #ef8071;
 }
 
@@ -18,7 +18,7 @@ body {
 
 .container {
 	max-width: 1200px;
-	margin:auto;
+	margin: auto;
 	padding: 25px;
 }
 
@@ -95,17 +95,16 @@ p {
 }
 
 .hero-link:not(:last-child) {
-    margin-right: 10px;
+	margin-right: 10px;
 }
 
 @media (min-width: 580px) {
-    header {
-        display: flex;
-        justify-content: space-between;
+	header {
+		display: flex;
+		justify-content: space-between;
 		flex-wrap: wrap;
-    }
+	}
 }
-
 
 /* Breadcrumb */
 
@@ -142,7 +141,7 @@ p {
 .post-previews {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	grid-gap: 1.5rem;	
+	grid-gap: 1.5rem;
 	padding-bottom: 16px;
 }
 
@@ -156,7 +155,7 @@ p {
 }
 
 .post-preview section {
-	font-size: .9rem;
+	font-size: 0.9rem;
 }
 
 .post-preview footer {
@@ -167,31 +166,39 @@ p {
 
 /* Link */
 
-a {
+/* a {
 	color: var(--link-main-color);
 	text-decoration: none;
-	/* padding: 5px; */
+	padding: 5px;
+} */
+
+a {
+	color: var(--link-main-color);
+	text-decoration-color: var(--link-main-color);
+	text-decoration-thickness: 0.3ex;
+	text-underline-offset: 0.3ex;
 }
 
-a:hover {
+a:hover,
+a:focus {
 	color: var(--link-hover-color);
-	border-bottom: solid 2px var(--link-hover-color);
+	text-decoration-color: var(--link-hover-color);
 }
 
-a:link {
+/* a:link {
 	text-decoration: none;
-}
+} */
 
-a:visited {
+/* a:visited {
 	text-decoration: none;
-}
+} */
 
 /* Project Previews */
 
 .project-previews {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	grid-gap: 1.5rem;	
+	grid-gap: 1.5rem;
 	padding-top: 20px;
 }
 
@@ -209,7 +216,7 @@ a:visited {
 	transform: translateY(-5px);
 }
 
-.project-preview:visited  {
+.project-preview:visited {
 	text-decoration: none;
 	color: var(--text-color);
 }
@@ -220,7 +227,7 @@ a:visited {
 }
 
 .project-preview section {
-	font-size: .9rem;
+	font-size: 0.9rem;
 }
 
 .project-preview footer {
@@ -247,7 +254,7 @@ a:visited {
 }
 
 .experiences > li:not(:last-child) {
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 /* Footer */
@@ -263,10 +270,10 @@ a:visited {
 }
 
 @media (min-width: 580px) {
-    .footer {
-        display: flex;
-        justify-content: space-between;
-    }
+	.footer {
+		display: flex;
+		justify-content: space-between;
+	}
 
 	.footer p {
 		display: block;
