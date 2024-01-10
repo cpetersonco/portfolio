@@ -82,18 +82,21 @@ export default function Home({ posts }) {
 				<nav className="hero-links">
 					<ul>
 						<li className="hero-link">
-							<a href="#about" className="link">
-								about.
+							<a href="/posts">blog.</a>
+						</li>
+						<li className="hero-link">
+							<a href="https://www.linkedin.com/in/ChristianUA/">
+								linkedin.
 							</a>
 						</li>
 						<li className="hero-link">
-							<a href="#blog" className="link">
-								blog.
+							<a href="https://github.com/ChristianDPeterson">
+								github.
 							</a>
 						</li>
 						<li className="hero-link">
-							<a href="#projects" className="link">
-								projects.
+							<a href="https://christian-blog.cdn.prismic.io/christian-blog/457d41f6-846f-4bce-8b73-12b7d9fd9b71_Christian+Peterson+-+Resume.pdf">
+								resume.
 							</a>
 						</li>
 					</ul>
@@ -155,50 +158,49 @@ export default function Home({ posts }) {
 			<h1 id="blog" className="section">
 				blog
 			</h1>
-			<div className="post-previews">
+			<ul className="post-previews">
 				{posts &&
 					posts.map((post) => {
 						const { id, uid, data } = post;
 						const { title, description, date } = data;
 						const href = `/posts/${uid}`;
+
 						return (
-							<article key={id} className="post-preview">
-								<header>
-									{title && (
-										<a className="link" href={href}>
-											{RichText.render(title)}
-										</a>
-									)}
-								</header>
-								<section>
+							<li key={id} className="post-preview">
+								{title && (
+									<a className="title" href={href}>
+										{
+											RichText.render(title).props
+												.children[0].props.children[0]
+										}
+									</a>
+								)}
+								{
+									<time dateTime="Jan 06 2024">
+										{" "}
+										{new Date(date).toLocaleDateString(
+											"en-US",
+											{
+												year: "numeric",
+												month: "long",
+												day: "numeric",
+											}
+										)}{" "}
+									</time>
+								}
+								<br />
+								<span>
 									{description &&
 										RichText.render(description)}
-								</section>
-								<footer>
-									<a className="link" href={href}>
-										read more
-									</a>
-									{date && (
-										<sub>
-											{new Date(date).toLocaleDateString(
-												"en-US",
-												{
-													year: "numeric",
-													month: "long",
-													day: "numeric",
-												}
-											)}
-										</sub>
-									)}
-								</footer>
-							</article>
+								</span>
+							</li>
 						);
 					})}
-			</div>
+			</ul>
 			<h1 id="projects" className="section">
 				projects
 			</h1>
-			<div className="project-previews" k>
+			<div className="project-previews">
 				{projects &&
 					projects.map((project, i) => {
 						const {
@@ -234,34 +236,6 @@ export default function Home({ posts }) {
 					})}
 			</div>
 			<footer className="footer">
-				<nav className="hero-links">
-					<ul>
-						<li className="hero-link">
-							<a
-								className="link"
-								href="https://www.linkedin.com/in/ChristianUA/"
-							>
-								linkedin.
-							</a>
-						</li>
-						<li className="hero-link">
-							<a
-								className="link"
-								href="https://github.com/ChristianDPeterson"
-							>
-								github.
-							</a>
-						</li>
-						<li className="hero-link">
-							<a
-								className="link"
-								href="https://christian-blog.cdn.prismic.io/christian-blog/457d41f6-846f-4bce-8b73-12b7d9fd9b71_Christian+Peterson+-+Resume.pdf"
-							>
-								resume.
-							</a>
-						</li>
-					</ul>
-				</nav>
 				<p> © {new Date().getFullYear()} by Christian Peterson.</p>
 			</footer>
 		</div>

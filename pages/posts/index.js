@@ -40,29 +40,26 @@ export default function Posts({ posts }) {
 				]}
 			/>
 			<Breadcrumbs></Breadcrumbs>
-			{posts &&
-				posts.map((post) => {
-					const { id, uid, data } = post;
-					const { title, description, date } = data;
-					const href = `/posts/${uid}`;
-					return (
-						<article key={id} className="post-preview">
-							<section>
+			<ul className="post-previews">
+				{posts &&
+					posts.map((post) => {
+						const { id, uid, data } = post;
+						const { title, description, date } = data;
+						const href = `/posts/${uid}`;
+
+						return (
+							<li key={id} className="post-preview">
 								{title && (
-									<a className="link" href={href}>
-										{RichText.render(title)}
+									<a className="title" href={href}>
+										{
+											RichText.render(title).props
+												.children[0].props.children[0]
+										}
 									</a>
 								)}
-								{description && (
-									<>{RichText.render(description)}</>
-								)}
-							</section>
-							<footer>
-								<a className="link" href={href}>
-									read more
-								</a>
-								{date && (
-									<sub>
+								{
+									<time dateTime="Jan 06 2024">
+										{" "}
 										{new Date(date).toLocaleDateString(
 											"en-US",
 											{
@@ -70,13 +67,18 @@ export default function Posts({ posts }) {
 												month: "long",
 												day: "numeric",
 											}
-										)}
-									</sub>
-								)}
-							</footer>
-						</article>
-					);
-				})}
+										)}{" "}
+									</time>
+								}
+								<br />
+								<span>
+									{description &&
+										RichText.render(description)}
+								</span>
+							</li>
+						);
+					})}
+			</ul>
 		</div>
 	);
 }
