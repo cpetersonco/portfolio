@@ -16,10 +16,10 @@ export default function Post({ data }) {
 				title={`${title} | Christian Peterson`}
 				description={description}
 				openGraph={{
-					url: `https://www.cdpeterson.dev${asPath}`,
+					url: `https://www.cpeterson.co${asPath}`,
 					title,
 					description,
-					images: [{ url: "https://www.cdpeterson.dev/profile.jpg" }],
+					images: [{ url: "https://www.cpeterson.co/profile.jpg" }],
 					site_name: "Christian Peterson",
 				}}
 				additionalLinkTags={[

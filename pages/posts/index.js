@@ -12,11 +12,11 @@ export default function Posts({ posts }) {
 				title="Blog | Christian Peterson"
 				description="The blog of Christian Peterson, Software Engineer."
 				openGraph={{
-					url: `https://www.cdpeterson.dev/posts`,
+					url: `https://www.cpeterson.co/posts`,
 					title: "Blog | Christian Peterson",
 					description:
 						"The blog of Christian Peterson, Software Engineer.",
-					images: [{ url: "https://www.cdpeterson.dev/profile.jpg" }],
+					images: [{ url: "https://www.cpeterson.co/profile.jpg" }],
 					site_name: "Christian Peterson",
 				}}
 				additionalLinkTags={[
