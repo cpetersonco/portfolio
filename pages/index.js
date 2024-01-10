@@ -105,7 +105,7 @@ export default function Home({ posts }) {
 
 			<p id="about">
 				<strong>Hi there, I&apos;m Christian!</strong> I&apos;m a
-				Software Engineer working at{" "}
+				Software Developer working at{" "}
 				<a className="link" href="https://www.voya.com/">
 					Voya Financial
 				</a>
