@@ -85,14 +85,12 @@ export default function Home({ posts }) {
 							<a href="/posts">blog.</a>
 						</li>
 						<li className="hero-link">
-							<a href="https://www.linkedin.com/in/ChristianUA/">
+							<a href="https://www.linkedin.com/in/cpetersonco">
 								linkedin.
 							</a>
 						</li>
 						<li className="hero-link">
-							<a href="https://github.com/ChristianDPeterson">
-								github.
-							</a>
+							<a href="https://github.com/cpetersonco">github.</a>
 						</li>
 						<li className="hero-link">
 							<a href="https://christian-blog.cdn.prismic.io/christian-blog/457d41f6-846f-4bce-8b73-12b7d9fd9b71_Christian+Peterson+-+Resume.pdf">
