@@ -141,28 +141,28 @@ declare module 'astro:content' {
   slug: "adopting-a-greyhound";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
 "internship-in-review.md": {
 	id: "internship-in-review.md";
   slug: "internship-in-review";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "introduction.md": {
 	id: "introduction.md";
   slug: "introduction";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "loft-cinema-webcal-calendar.md": {
 	id: "loft-cinema-webcal-calendar.md";
   slug: "loft-cinema-webcal-calendar";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 };
 
@@ -174,5 +174,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("../src/content/config.js");
 }
