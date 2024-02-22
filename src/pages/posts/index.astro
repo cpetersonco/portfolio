@@ -2,290 +2,288 @@
 import { getCollection } from "astro:content";
 
 import Document from "../../layouts/Document.astro";
-import { client } from "../../prismic-configuration.js";
 
 let posts = await getCollection("posts");
-posts = posts.sort((a, b) => b.data.date - a.data.date);
+posts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Document title="Christian Peterson | Blog">
-    <h1 id="blog" class="section">posts</h1>
-    <ul class="post-previews">
-        {
-            posts &&
-                posts.map((post) => {
-                    const {
-                        id,
-                        slug,
-                        data: { title, author, description, date },
-                    } = post;
-                    const href = `/posts/${slug}`;
+	<h1 id="blog" class="section">posts</h1>
+	<ul class="post-previews">
+		{
+			posts &&
+				posts.map((post) => {
+					const {
+						slug,
+						data: { title, description, date },
+					} = post;
+					const href = `/posts/${slug}`;
 
-                    return (
-                        <li key={id} class="post-preview">
-                            <a class="title" href={href}>
-                                {title}
-                            </a>
-                            <time dateTime={date.toISOString()}>
-                                {date.toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                })}
-                            </time>
-                            <br />
-                            <p>{description}</p>
-                        </li>
-                    );
-                })
-        }
-    </ul>
+					return (
+						<li class="post-preview">
+							<a class="title" href={href}>
+								{title}
+							</a>
+							<time datetime={date.toISOString()}>
+								{date.toLocaleDateString("en-US", {
+									year: "numeric",
+									month: "long",
+									day: "numeric",
+								})}
+							</time>
+							<br />
+							<p>{description}</p>
+						</li>
+					);
+				})
+		}
+	</ul>
 </Document>
 
 <style is:global>
-    :root {
-        --text-color: #333;
-        --main-bg-color: #fbfbf2;
-        --card-bg-color: #f1f1ea;
-        --link-main-color: #da311b;
-        --link-hover-color: #ef8071;
-    }
+	:root {
+		--text-color: #333;
+		--main-bg-color: #fbfbf2;
+		--card-bg-color: #f1f1ea;
+		--link-main-color: #da311b;
+		--link-hover-color: #ef8071;
+	}
 
-    html,
-    body {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        font-family:
-            Source Sans Pro,
-            sans-serif;
-        background-color: var(--main-bg-color);
-        color: var(--text-color);
-    }
+	html,
+	body {
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		font-family:
+			Source Sans Pro,
+			sans-serif;
+		background-color: var(--main-bg-color);
+		color: var(--text-color);
+	}
 
-    .container {
-        max-width: 1200px;
-        margin: auto;
-        padding: 25px;
-    }
+	.container {
+		max-width: 1200px;
+		margin: auto;
+		padding: 25px;
+	}
 
-    p {
-        line-height: 2;
-    }
+	p {
+		line-height: 2;
+	}
 
-    @media (max-width: 580px) {
-        .section {
-            text-align: center;
-        }
-    }
+	@media (max-width: 580px) {
+		.section {
+			text-align: center;
+		}
+	}
 
-    /* Header */
+	/* Header */
 
-    .header {
-        align-items: center;
-        margin-bottom: 20px;
-        width: 100%;
-        height: auto;
-    }
+	.header {
+		align-items: center;
+		margin-bottom: 20px;
+		width: 100%;
+		height: auto;
+	}
 
-    .hero {
-        display: flex;
-        align-items: center;
-        justify-content: left;
-        width: auto;
-    }
+	.hero {
+		display: flex;
+		align-items: center;
+		justify-content: left;
+		width: auto;
+	}
 
-    .frame > img {
-        height: 100px;
-        width: 100px;
-        margin-right: 30px;
-        border-radius: 50%;
-        overflow: hidden;
-    }
+	.frame > img {
+		height: 100px;
+		width: 100px;
+		margin-right: 30px;
+		border-radius: 50%;
+		overflow: hidden;
+	}
 
-    @media (max-width: 580px) {
-        .frame > img {
-            margin-right: 0px;
-        }
-    }
+	@media (max-width: 580px) {
+		.frame > img {
+			margin-right: 0px;
+		}
+	}
 
-    .hero-links {
-        display: flex;
-        list-style-type: none;
-        padding-left: -40px;
-        justify-content: center;
-    }
+	.hero-links {
+		display: flex;
+		list-style-type: none;
+		padding-left: -40px;
+		justify-content: center;
+	}
 
-    .hero-links ul {
-        padding-left: 0px;
-    }
+	.hero-links ul {
+		padding-left: 0px;
+	}
 
-    .hero-link {
-        display: inline-block;
-    }
+	.hero-link {
+		display: inline-block;
+	}
 
-    .hero-link:not(:last-child) {
-        margin-right: 10px;
-    }
+	.hero-link:not(:last-child) {
+		margin-right: 10px;
+	}
 
-    @media (min-width: 580px) {
-        header {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-    }
+	@media (min-width: 580px) {
+		header {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+	}
 
-    /* Breadcrumb */
+	/* Breadcrumb */
 
-    .breadcrumb {
-        margin: 0;
-        display: flex;
-        padding: 0;
-        flex-wrap: wrap;
-        list-style: none;
-        align-items: flex-start;
-    }
+	.breadcrumb {
+		margin: 0;
+		display: flex;
+		padding: 0;
+		flex-wrap: wrap;
+		list-style: none;
+		align-items: flex-start;
+	}
 
-    .breadcrumb-separator {
-        display: flex;
-        margin-left: 8px;
-        margin-right: 8px;
-    }
+	.breadcrumb-separator {
+		display: flex;
+		margin-left: 8px;
+		margin-right: 8px;
+	}
 
-    .previewImage {
-        display: flex;
-        min-height: 250px;
-        justify-content: center;
-        align-items: center;
-    }
+	.previewImage {
+		display: flex;
+		min-height: 250px;
+		justify-content: center;
+		align-items: center;
+	}
 
-    .previewImage > img {
-        width: calc(100% - 20px);
-        height: auto;
-        padding: 10px;
-    }
+	.previewImage > img {
+		width: calc(100% - 20px);
+		height: auto;
+		padding: 10px;
+	}
 
-    /* Post Preview */
+	/* Post Preview */
 
-    ul.post-previews {
-        list-style-type: none;
-    }
+	ul.post-previews {
+		list-style-type: none;
+	}
 
-    .post-preview {
-        margin: 0 0 30px;
-    }
+	.post-preview {
+		margin: 0 0 30px;
+	}
 
-    .post-preview .title {
-        font-size: 1.3rem;
-    }
+	.post-preview .title {
+		font-size: 1.3rem;
+	}
 
-    ul li time {
-        white-space: nowrap;
-    }
+	ul li time {
+		white-space: nowrap;
+	}
 
-    time {
-        font-style: italic;
-        color: var(--text-color);
-    }
+	time {
+		font-style: italic;
+		color: var(--text-color);
+	}
 
-    /* Link */
+	/* Link */
 
-    a {
-        color: var(--link-main-color);
-        text-decoration-color: var(--link-main-color);
-        text-decoration-thickness: 0.3ex;
-        text-underline-offset: 0.3ex;
-    }
+	a {
+		color: var(--link-main-color);
+		text-decoration-color: var(--link-main-color);
+		text-decoration-thickness: 0.3ex;
+		text-underline-offset: 0.3ex;
+	}
 
-    a:hover,
-    a:focus {
-        color: var(--link-hover-color);
-        text-decoration-color: var(--link-hover-color);
-    }
+	a:hover,
+	a:focus {
+		color: var(--link-hover-color);
+		text-decoration-color: var(--link-hover-color);
+	}
 
-    /* Project Previews */
+	/* Project Previews */
 
-    .project-previews {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 1.5rem;
-        padding-top: 20px;
-    }
+	.project-previews {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-gap: 1.5rem;
+		padding-top: 20px;
+	}
 
-    .project-preview {
-        margin: 0;
-        padding: 30px;
-        color: var(--text-color);
-        text-decoration: none;
-        transition: transform 250ms;
-    }
+	.project-preview {
+		margin: 0;
+		padding: 30px;
+		color: var(--text-color);
+		text-decoration: none;
+		transition: transform 250ms;
+	}
 
-    .project-preview:hover {
-        text-decoration: none;
-        color: var(--text-color);
-        transform: translateY(-5px);
-    }
+	.project-preview:hover {
+		text-decoration: none;
+		color: var(--text-color);
+		transform: translateY(-5px);
+	}
 
-    .project-preview:visited {
-        text-decoration: none;
-        color: var(--text-color);
-    }
+	.project-preview:visited {
+		text-decoration: none;
+		color: var(--text-color);
+	}
 
-    .project-preview h1 {
-        font-size: 1.5rem;
-        margin-top: 0;
-    }
+	.project-preview h1 {
+		font-size: 1.5rem;
+		margin-top: 0;
+	}
 
-    .project-preview section {
-        font-size: 0.9rem;
-    }
+	.project-preview section {
+		font-size: 0.9rem;
+	}
 
-    .project-preview footer {
-        display: flex;
-        justify-content: right;
-        align-items: center;
-    }
+	.project-preview footer {
+		display: flex;
+		justify-content: right;
+		align-items: center;
+	}
 
-    /* Experiences */
+	/* Experiences */
 
-    .experiences {
-        display: grid;
-        grid-gap: 1rem;
-        padding-bottom: 16px;
-    }
+	.experiences {
+		display: grid;
+		grid-gap: 1rem;
+		padding-bottom: 16px;
+	}
 
-    .experiences li {
-        padding-left: 0.5em;
-    }
+	.experiences li {
+		padding-left: 0.5em;
+	}
 
-    .experiences li::marker {
-        content: attr(data-icon);
-        font-size: 1.25em;
-    }
+	.experiences li::marker {
+		content: attr(data-icon);
+		font-size: 1.25em;
+	}
 
-    .experiences > li:not(:last-child) {
-        margin-bottom: 5px;
-    }
+	.experiences > li:not(:last-child) {
+		margin-bottom: 5px;
+	}
 
-    /* Footer */
-    .footer {
-        align-items: center;
-        margin-top: 20px;
-        height: 30px;
-    }
+	/* Footer */
+	.footer {
+		align-items: center;
+		margin-top: 20px;
+		height: 30px;
+	}
 
-    .footer p {
-        display: flex;
-        justify-content: center;
-    }
+	.footer p {
+		display: flex;
+		justify-content: center;
+	}
 
-    .block-img {
-        margin: 0px auto;
-    }
+	.block-img {
+		margin: 0px auto;
+	}
 
-    .block-img > img {
-        width: 100%;
-        height: auto;
-    }
+	.block-img > img {
+		width: 100%;
+		height: auto;
+	}
 </style>
