@@ -1,0 +1,400 @@
+---
+import { getCollection } from "astro:content";
+
+import Document from "../layouts/Document.astro";
+import { client } from "../prismic-configuration.js";
+
+let posts = await getCollection("posts");
+posts = posts.sort((a, b) => b.data.date - a.data.date);
+
+const projects = [
+    {
+        title: "Notes",
+        subtitle: "React, Firebase, etc.",
+        link: "https://notes.cpeterson.co",
+        repo: "https://github.com/cpetersonco/notes",
+        description:
+            "A note taking app featuring email authentication and note creation using the open source Quill editor",
+        backgroundColor: "#38A3E5",
+    },
+    {
+        title: "Pokemon Tracker",
+        subtitle: "React, REST API, etc.",
+        link: "https://pokemon.cpeterson.co",
+        repo: "https://github.com/cpetersonco/pokemon-tracker",
+        description:
+            "Catch 'em all! Search and capture pokemon using the PokeAPI.",
+        backgroundColor: "#ffca3a",
+    },
+    {
+        title: "Loft Cinema Web Calendar",
+        subtitle: "Node.js, Cheerio, axios, ics",
+        link: "webcal://loft.cpeterson.co/event.ics",
+        repo: "https://github.com/cpetersonco/Loft-Cinema-API",
+        description:
+            "A publically-served iCal calendar for the local cinema, Loft Cinema.",
+        backgroundColor: "#FF6B70",
+    },
+];
+---
+
+<Document title="Christian Peterson">
+    <p id="about">
+        <strong>Hi there, I&apos;m Christian!</strong> I&apos;m a Software Developer
+        working at{" "}
+        <a class="link" href="https://www.voya.com/"> Voya Financial</a>
+        , a benefits management platform. A recent graduate from the University of
+        Arizona with a Bachelor of Science in Computer Science, my passion for programming
+        began with web development, and has since expanded into various areas of
+        software development. I enjoy building full-stack web applications with an
+        emphasis on user experience. I&apos;m excited to continue growing my skillset
+        and exploring new technologies. In my free time, I make music, read, play
+        video games, and watch movies. Join me on my journey!
+    </p>
+    <h1 class="section">experience</h1>
+    <ul class="experiences">
+        <li data-icon="👨🏻‍💻">
+            <strong>Software Developer</strong> at{" "}
+            <a class="link" href="https://www.voya.com/">Voya Financial</a>
+            <span class="subtext">(January 2024 - Present)</span>
+        </li>
+        <li data-icon="🦄">
+            <strong>Software Engineer I</strong> at{" "}
+            <a class="link" href="https://www.benefitfocus.com"
+                >Benefitfocus
+            </a>
+            <span class="subtext"> (January 2022 - December 2023) </span>
+        </li>
+        <li data-icon="👶">
+            <strong>Software Engineer Intern</strong> at{" "}
+            <a class="link" href="https://www.benefitfocus.com/">
+                Benefitfocus
+            </a>
+            <span class="subtext">(May 2021 - December 2021)</span>
+        </li>
+        <li data-icon="💻">
+            <strong>Support Analyst Intern</strong> at{" "}
+            <a class="link" href="https://communitymedicalservices.org/">
+                Community Medical Services
+            </a>
+            <span class="subtext">(June 2017 - May 2021)</span>
+        </li>
+    </ul>
+    <h1 id="blog" class="section">blog</h1>
+    <ul class="post-previews">
+        {
+            posts &&
+                posts.map((post) => {
+                    const {
+                        id,
+                        slug,
+                        data: { title, author, description, date },
+                    } = post;
+                    const href = `/posts/${slug}`;
+
+                    return (
+                        <li key={id} class="post-preview">
+                            <a class="title" href={href}>
+                                {title}
+                            </a>
+                            <time dateTime={date.toISOString()}>
+                                {date.toLocaleDateString("en-US", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                })}
+                            </time>
+                            <br />
+                            <p>{description}</p>
+                        </li>
+                    );
+                })
+        }
+    </ul>
+    <h1 id="projects" class="section">projects</h1>
+    <div class="project-previews">
+        {
+            projects &&
+                projects.map((project, i) => {
+                    const {
+                        title,
+                        subtitle,
+                        repo,
+                        link,
+                        description,
+                        preview_image,
+                        backgroundColor,
+                    } = project;
+
+                    return (
+                        <a
+                            class="project-preview"
+                            href={link}
+                            key={i}
+                            style={{ backgroundColor }}
+                        >
+                            <article>
+                                <header>
+                                    <h1>{title}</h1>
+                                </header>
+                                <section>
+                                    <p>{description}</p>
+                                </section>
+                                <footer>
+                                    <sub>{subtitle}</sub>
+                                </footer>
+                            </article>
+                        </a>
+                    );
+                })
+        }
+    </div>
+</Document>
+
+<style is:global>
+    :root {
+        --text-color: #333;
+        --main-bg-color: #fbfbf2;
+        --card-bg-color: #f1f1ea;
+        --link-main-color: #da311b;
+        --link-hover-color: #ef8071;
+    }
+
+    html,
+    body {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-family:
+            Source Sans Pro,
+            sans-serif;
+        background-color: var(--main-bg-color);
+        color: var(--text-color);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 25px;
+    }
+
+    p {
+        line-height: 2;
+    }
+
+    @media (max-width: 580px) {
+        .section {
+            text-align: center;
+        }
+    }
+
+    /* Header */
+
+    .header {
+        align-items: center;
+        margin-bottom: 20px;
+        width: 100%;
+        height: auto;
+    }
+
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        width: auto;
+    }
+
+    .frame > img {
+        height: 100px;
+        width: 100px;
+        margin-right: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    @media (max-width: 580px) {
+        .frame > img {
+            margin-right: 0px;
+        }
+    }
+
+    .hero-links {
+        display: flex;
+        list-style-type: none;
+        padding-left: -40px;
+        justify-content: center;
+    }
+
+    .hero-links ul {
+        padding-left: 0px;
+    }
+
+    .hero-link {
+        display: inline-block;
+    }
+
+    .hero-link:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    @media (min-width: 580px) {
+        header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+
+    /* Breadcrumb */
+
+    .breadcrumb {
+        margin: 0;
+        display: flex;
+        padding: 0;
+        flex-wrap: wrap;
+        list-style: none;
+        align-items: flex-start;
+    }
+
+    .breadcrumb-separator {
+        display: flex;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .previewImage {
+        display: flex;
+        min-height: 250px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .previewImage > img {
+        width: calc(100% - 20px);
+        height: auto;
+        padding: 10px;
+    }
+
+    /* Post Preview */
+
+    ul.post-previews {
+        list-style-type: none;
+    }
+
+    .post-preview {
+        margin: 0 0 30px;
+    }
+
+    .post-preview .title {
+        font-size: 1.3rem;
+    }
+
+    ul li time {
+        white-space: nowrap;
+    }
+
+    time {
+        font-style: italic;
+        color: var(--text-color);
+    }
+
+    /* Link */
+
+    a {
+        color: var(--link-main-color);
+        text-decoration-color: var(--link-main-color);
+        text-decoration-thickness: 0.3ex;
+        text-underline-offset: 0.3ex;
+    }
+
+    a:hover,
+    a:focus {
+        color: var(--link-hover-color);
+        text-decoration-color: var(--link-hover-color);
+    }
+
+    /* Project Previews */
+
+    .project-previews {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 1.5rem;
+        padding-top: 20px;
+    }
+
+    .project-preview {
+        margin: 0;
+        padding: 30px;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: transform 250ms;
+    }
+
+    .project-preview:hover {
+        text-decoration: none;
+        color: var(--text-color);
+        transform: translateY(-5px);
+    }
+
+    .project-preview:visited {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    .project-preview h1 {
+        font-size: 1.5rem;
+        margin-top: 0;
+    }
+
+    .project-preview section {
+        font-size: 0.9rem;
+    }
+
+    .project-preview footer {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+    }
+
+    /* Experiences */
+
+    .experiences {
+        display: grid;
+        grid-gap: 1rem;
+        padding-bottom: 16px;
+    }
+
+    .experiences li {
+        padding-left: 0.5em;
+    }
+
+    .experiences li::marker {
+        content: attr(data-icon);
+        font-size: 1.25em;
+    }
+
+    .experiences > li:not(:last-child) {
+        margin-bottom: 5px;
+    }
+
+    /* Footer */
+    .footer {
+        align-items: center;
+        margin-top: 20px;
+        height: 30px;
+    }
+
+    .footer p {
+        display: flex;
+        justify-content: center;
+    }
+
+    .block-img {
+        margin: 0px auto;
+    }
+
+    .block-img > img {
+        width: 100%;
+        height: auto;
+    }
+</style>
