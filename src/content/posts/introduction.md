@@ -3,7 +3,7 @@ title: Welcome to my blog
 description: Oh hello there!
 author: cpeterson
 slug: introduction
-date: 2020-12-28
+pubDate: 2020-12-28
 ---
 
 Hello everyone! I'm Christian, a student developer living in Tucson, Arizona.

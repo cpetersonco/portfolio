@@ -4,7 +4,9 @@ import { getCollection } from "astro:content";
 import Document from "../../layouts/Document.astro";
 
 let posts = await getCollection("posts");
-posts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+posts = posts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <Document title="Christian Peterson | Blog">
@@ -15,7 +17,7 @@ posts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
         posts.map((post) => {
           const {
             slug,
-            data: { title, description, date },
+            data: { title, description, pubDate },
           } = post;
           const href = `/posts/${slug}`;
 
@@ -24,8 +26,8 @@ posts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
               <a class="title" href={href} data-astro-prefetch>
                 {title}
               </a>
-              <time datetime={date.toISOString()}>
-                {date.toLocaleDateString("en-US", {
+              <time datetime={pubDate.toISOString()}>
+                {pubDate.toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",

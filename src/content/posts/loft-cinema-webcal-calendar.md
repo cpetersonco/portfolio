@@ -3,7 +3,7 @@ title: Creating a Google Calendar endpoint
 description: Generating a public Google Calendar endpoint for my local movie theater!
 author: cpeterson
 slug: loft-cinema-webcal-calendar
-date: 2022-08-06
+pubDate: 2022-08-06
 ---
 
 Like many people, my life runs off my Google Calendar. **If it is not on my calendar, it does not exist.** For years I wanted to be able to view local events, such as local theater showtimes or concerts, from within my curated Google Calendar setup. There have been many times I've found myself missing a local event, not because I was busy, but because I simply didn't know it was happening.

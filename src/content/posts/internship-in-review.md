@@ -3,7 +3,7 @@ title: Internship in Review
 description: A quick overview of my internship experience at Benefitfocus!
 author: cpeterson
 slug: internship-in-review
-date: 2021-08-05
+pubDate: 2021-08-05
 ---
 
 Next week will be the last week of my internship at Benefitfocus! Wow, the summer has flown by. I am incredibly grateful for the skills I've gained and the knowledge shared with me by my colleagues. I thought it'd be wise to reflect on my time this summer and share my experiences!

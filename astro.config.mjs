@@ -6,4 +6,5 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   integrations: [mdx()],
   prefetch: true,
+  site: "https://www.cpeterson.co",
 });
