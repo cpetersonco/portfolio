@@ -5,30 +5,31 @@ author: cpeterson
 slug: adopting-a-greyhound
 date: 2024-01-31
 ---
-import { Image } from 'astro:assets';
-import furbo from '../../assets/furbo.png';
-import selfie from '../../assets/selfie.png';
-import derp from '../../assets/derp.png';
+
+import BlogImage from "../../components/BlogImage.astro";
+import furbo from "../../assets/furbo.png";
+import selfie from "../../assets/selfie.png";
+import derp from "../../assets/derp.png";
 
 I have always been a dog person. My first dog, Furbo, was my first best friend.
 
-<Image src={furbo} alt="My first dog, Furbo."/>
+<BlogImage src={furbo} alt="My first dog, Furbo." caption="My first dog, Furbo."/>
 
-At our local Arizona Renaissance Festival, a local non-profit organization the Greyhound Guild has had a booth for as long as I've been going (15+ years) and I've always been mesmerized by these magnificent and stately creatures. Contrary to popular belief, they make fantastic apartment dogs. After I spoke to a few owners and met some of these beauties, they pointed me to the Southern Arizona Greyhound Association (SACA).
+At our local Arizona Renaissance Festival, a local non-profit organization the Greyhound Guild has had a booth for as long as I've been going (15+ years) and I've always been mesmerized by these magnificent and stately creatures. Contrary to popular belief, they make fantastic apartment dogs. After I spoke to a few owners and met some of these beauties, they pointed me to the Southern Arizona Greyhound Adoption (SAGA).
 
 ## The state of greyhound racing in Arizona
 
-I live in Tucson, Arizona, and in the past, we had a local greyhound racing track and associated kennel that flooded Tucson with greyhounds in need of a home. The lovely people at SACA were the primary rehoming association making sure these retired racers ended up rehomed for good.
+I live in Tucson, Arizona, and in the past, we had a local greyhound racing track and associated kennel that flooded Tucson with greyhounds in need of a home. The lovely people at SAGA were the primary rehoming association making sure these retired racers ended up rehomed for good.
 
 This all changed in 2016; Arizona Governor Doug Doucey signed a ban on greyhound racing into law, effectively ending the vicious cycle of greyhound breeding in Arizona. This followed a nation-wide legislative push to end commercial greyhound racing, and it is now illegal in 42 states. The only remaining tracks are in West Virginia, where two casinos still operate racing tracks. Recently introduced legislation hopes to end greyhound racing federally once and for all.
 
-Nowadays, SACA still helps rehome retired racers; however, their scope has now increased beyond national borders. They work with organizations in Ireland, Australia, and Mexico, coordinating long-distance flights and local fostering for dozens of dogs each year.
+Nowadays, SAGA still helps rehome retired racers; however, their scope has now increased beyond national borders. They work with organizations in Ireland, Australia, and Mexico, coordinating long-distance flights and local fostering for dozens of dogs each year.
 
 ## The adoption process
 
-Before deciding to submit an application to SACA, I made sure to do my research on greyhounds. I read Adopting a Racing Greyhound by Cynthia A. Branigan, as well as a few other online resources.
+Before deciding to submit an application to SAGA, I made sure to do my research on greyhounds. I read Adopting a Racing Greyhound by Cynthia A. Branigan, as well as a few other online resources.
 
-SACA has an online application for prospective adopters, followed by an in-home visit. This sounded intimidating at first, but it's honestly just get tips and guidance from experienced greyhound owners on what they should eat, what they might get into, etc.
+SAGA has an online application for prospective adopters, followed by an in-home visit. This sounded intimidating at first, but it's honestly just get tips and guidance from experienced greyhound owners on what they should eat, what they might get into, etc.
 
 To prepare my home, I got rid of my poisonous house plants. These could be reintroduced at some point, I just didn't want to risk giving a nervous dog free access to delicious leafy diarrhea. Beyond that, I live alone with no other pets, so I was well-suited.
 
@@ -36,7 +37,11 @@ After the application was approved and visit completed, I was added to the waitl
 
 Lyn, or She's So Bold (her racing name), was a two-year-old Irish racing greyhound who had been state-side for a few weeks at her foster home.
 
-<Image src={selfie} alt="A picture of Wyn and I after I first picked her up from her foster home."/>
+<BlogImage
+  src={selfie}
+  alt="A picture of Wyn and I after I first picked her up from her foster home."
+  caption="Picking up Wyn from her foster home."
+/>
 
 ## Post-adoption
 
@@ -46,4 +51,4 @@ An interesting perk that I hadn't anticipated with adopting an Irish greyhound i
 
 What I would do to get some puppy pics of her...
 
-<Image src={derp} alt="Wyn being a derp, laying upside down on her bed."/>
+<BlogImage src={derp} alt="Wyn being a derp, laying upside down on her bed." caption="Wyn roaching on her bed." />
