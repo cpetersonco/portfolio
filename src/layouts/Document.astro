@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import profile from "../assets/profile.jpg";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -34,6 +35,7 @@ const { title } = Astro.props;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <ViewTransitions />
   </head>
   <body>
     <div class="container">
@@ -77,253 +79,311 @@ const { title } = Astro.props;
       </footer>
     </div>
     <script async defer src="https://scripts.withcabin.com/hello.js"></script>
+    <style is:global>
+      /*
+  1. Use a more-intuitive box-sizing model.
+*/
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      /*
+  2. Remove default margin
+*/
+      * {
+        margin: 0;
+      }
+      /*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+      body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      /*
+  5. Improve media defaults
+*/
+      img,
+      picture,
+      video,
+      canvas,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      /*
+  6. Remove built-in form typography styles
+*/
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit;
+      }
+      /*
+  7. Avoid text overflows
+*/
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        overflow-wrap: break-word;
+      }
+      /*
+  8. Create a root stacking context
+*/
+      #root,
+      #__next {
+        isolation: isolate;
+      }
+
+      :root {
+        --text-color: #333;
+        --main-bg-color: #fbfbf2;
+        --card-bg-color: #f1f1ea;
+        --link-main-color: #da311b;
+        --link-hover-color: #ef8071;
+      }
+
+      body {
+        font-family:
+          Source Sans Pro,
+          sans-serif;
+        background-color: var(--main-bg-color);
+        color: var(--text-color);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0px 24px;
+      }
+
+      p {
+        line-height: 2;
+      }
+
+      @media (max-width: 580px) {
+        .section {
+          text-align: center;
+        }
+      }
+
+      /* Header */
+
+      .header {
+        align-items: center;
+        padding: 20px 0px;
+        width: 100%;
+        height: auto;
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        width: auto;
+      }
+
+      .frame img {
+        height: 100px;
+        width: 100px;
+        margin-right: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      @media (max-width: 580px) {
+        .frame > img {
+          margin-right: 0px;
+        }
+      }
+
+      .hero-links {
+        display: flex;
+        list-style-type: none;
+        padding-left: -40px;
+        justify-content: center;
+      }
+
+      .hero-links ul {
+        padding-left: 0px;
+      }
+
+      .hero-link {
+        display: inline-block;
+      }
+
+      .hero-link:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      @media (min-width: 580px) {
+        header {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+        }
+      }
+
+      /* Breadcrumb */
+
+      .breadcrumb {
+        margin: 0;
+        display: flex;
+        padding: 0;
+        flex-wrap: wrap;
+        list-style: none;
+        align-items: flex-start;
+      }
+
+      .breadcrumb-separator {
+        display: flex;
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+
+      .previewImage {
+        display: flex;
+        min-height: 250px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .previewImage > img {
+        width: calc(100% - 20px);
+        height: auto;
+        padding: 10px;
+      }
+
+      /* Post Preview */
+
+      ul.post-previews {
+        list-style-type: none;
+      }
+
+      .post-preview {
+        margin: 0 0 30px;
+      }
+
+      .post-preview .title {
+        font-size: 1.3rem;
+      }
+
+      ul li time {
+        white-space: nowrap;
+      }
+
+      time {
+        font-style: italic;
+        color: var(--text-color);
+      }
+
+      /* Link */
+
+      a {
+        color: var(--link-main-color);
+        text-decoration-color: var(--link-main-color);
+        text-decoration-thickness: 0.3ex;
+        text-underline-offset: 0.3ex;
+      }
+
+      a:hover,
+      a:focus {
+        color: var(--link-hover-color);
+        text-decoration-color: var(--link-hover-color);
+      }
+
+      /* Project Previews */
+
+      .project-previews {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 1.5rem;
+        padding-top: 20px;
+      }
+
+      .project-preview {
+        margin: 0;
+        padding: 30px;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: transform 250ms;
+      }
+
+      .project-preview:hover {
+        text-decoration: none;
+        color: var(--text-color);
+        transform: translateY(-5px);
+      }
+
+      .project-preview:visited {
+        text-decoration: none;
+        color: var(--text-color);
+      }
+
+      .project-preview h1 {
+        font-size: 1.5rem;
+        margin-top: 0;
+      }
+
+      .project-preview section {
+        font-size: 0.9rem;
+      }
+
+      .project-preview footer {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+      }
+
+      /* Experiences */
+
+      .experiences {
+        display: grid;
+        grid-gap: 1rem;
+        padding-bottom: 16px;
+      }
+
+      .experiences li {
+        padding-left: 0.5em;
+      }
+
+      .experiences li::marker {
+        content: attr(data-icon);
+        font-size: 1.25em;
+      }
+
+      .experiences > li:not(:last-child) {
+        margin-bottom: 5px;
+      }
+
+      /* Footer */
+      .footer {
+        align-items: center;
+        margin-top: 20px;
+        height: 30px;
+      }
+
+      .footer p {
+        display: flex;
+        justify-content: center;
+      }
+
+      .block-img {
+        margin: 0px auto;
+      }
+
+      .block-img > img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
   </body>
 </html>
-
-<style is:global>
-  :root {
-    --text-color: #333;
-    --main-bg-color: #fbfbf2;
-    --card-bg-color: #f1f1ea;
-    --link-main-color: #da311b;
-    --link-hover-color: #ef8071;
-  }
-
-  html,
-  body {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    font-family:
-      Source Sans Pro,
-      sans-serif;
-    background-color: var(--main-bg-color);
-    color: var(--text-color);
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 25px;
-  }
-
-  p {
-    line-height: 2;
-  }
-
-  @media (max-width: 580px) {
-    .section {
-      text-align: center;
-    }
-  }
-
-  /* Header */
-
-  .header {
-    align-items: center;
-    margin-bottom: 20px;
-    width: 100%;
-    height: auto;
-  }
-
-  .hero {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    width: auto;
-  }
-
-  .frame img {
-    height: 100px;
-    width: 100px;
-    margin-right: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-
-  @media (max-width: 580px) {
-    .frame > img {
-      margin-right: 0px;
-    }
-  }
-
-  .hero-links {
-    display: flex;
-    list-style-type: none;
-    padding-left: -40px;
-    justify-content: center;
-  }
-
-  .hero-links ul {
-    padding-left: 0px;
-  }
-
-  .hero-link {
-    display: inline-block;
-  }
-
-  .hero-link:not(:last-child) {
-    margin-right: 10px;
-  }
-
-  @media (min-width: 580px) {
-    header {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-  }
-
-  /* Breadcrumb */
-
-  .breadcrumb {
-    margin: 0;
-    display: flex;
-    padding: 0;
-    flex-wrap: wrap;
-    list-style: none;
-    align-items: flex-start;
-  }
-
-  .breadcrumb-separator {
-    display: flex;
-    margin-left: 8px;
-    margin-right: 8px;
-  }
-
-  .previewImage {
-    display: flex;
-    min-height: 250px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .previewImage > img {
-    width: calc(100% - 20px);
-    height: auto;
-    padding: 10px;
-  }
-
-  /* Post Preview */
-
-  ul.post-previews {
-    list-style-type: none;
-  }
-
-  .post-preview {
-    margin: 0 0 30px;
-  }
-
-  .post-preview .title {
-    font-size: 1.3rem;
-  }
-
-  ul li time {
-    white-space: nowrap;
-  }
-
-  time {
-    font-style: italic;
-    color: var(--text-color);
-  }
-
-  /* Link */
-
-  a {
-    color: var(--link-main-color);
-    text-decoration-color: var(--link-main-color);
-    text-decoration-thickness: 0.3ex;
-    text-underline-offset: 0.3ex;
-  }
-
-  a:hover,
-  a:focus {
-    color: var(--link-hover-color);
-    text-decoration-color: var(--link-hover-color);
-  }
-
-  /* Project Previews */
-
-  .project-previews {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 1.5rem;
-    padding-top: 20px;
-  }
-
-  .project-preview {
-    margin: 0;
-    padding: 30px;
-    color: var(--text-color);
-    text-decoration: none;
-    transition: transform 250ms;
-  }
-
-  .project-preview:hover {
-    text-decoration: none;
-    color: var(--text-color);
-    transform: translateY(-5px);
-  }
-
-  .project-preview:visited {
-    text-decoration: none;
-    color: var(--text-color);
-  }
-
-  .project-preview h1 {
-    font-size: 1.5rem;
-    margin-top: 0;
-  }
-
-  .project-preview section {
-    font-size: 0.9rem;
-  }
-
-  .project-preview footer {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-  }
-
-  /* Experiences */
-
-  .experiences {
-    display: grid;
-    grid-gap: 1rem;
-    padding-bottom: 16px;
-  }
-
-  .experiences li {
-    padding-left: 0.5em;
-  }
-
-  .experiences li::marker {
-    content: attr(data-icon);
-    font-size: 1.25em;
-  }
-
-  .experiences > li:not(:last-child) {
-    margin-bottom: 5px;
-  }
-
-  /* Footer */
-  .footer {
-    align-items: center;
-    margin-top: 20px;
-    height: 30px;
-  }
-
-  .footer p {
-    display: flex;
-    justify-content: center;
-  }
-
-  .block-img {
-    margin: 0px auto;
-  }
-
-  .block-img > img {
-    width: 100%;
-    height: auto;
-  }
-</style>
