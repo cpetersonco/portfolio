@@ -1,17 +1,11 @@
 ---
 import { Image } from "astro:assets";
 
-interface Props {
-  src: string;
-  alt: string;
-  caption?: string;
-}
-
-const { src, alt, caption } = Astro.props;
+const { src, alt, caption, ...attrs } = Astro.props;
 ---
 
 <figure class="figure">
-  <Image class="image" src={src} alt={alt} />
+  <Image class="image" src={src} alt={alt} {...attrs} />
   {
     caption && (
       <figcaption class="caption">
