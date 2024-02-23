@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
+import profile from "../assets/profile.jpg";
+
 interface Props {
-    title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,342 +11,318 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>{title}</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
 
-        <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
 
-        <meta
-            name="description"
-            content="Christian Peterson, Software Engineer."
-        />
-        <meta property="og:title" content="Christian Peterson" />
-        <meta
-            property="og:description"
-            content="Christian Peterson, Software Engineer."
-        />
-        <meta property="og:url" content="https://www.cpeterson.co" />
-        <meta
-            property="og:image"
-            content="https://www.cpeterson.co/profile.jpg"
-        />
-        <meta property="og:site_name" content="Christian Peterson" />
-        <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Christian Peterson, Software Engineer." />
+    <meta property="og:title" content="Christian Peterson" />
+    <meta
+      property="og:description"
+      content="Christian Peterson, Software Engineer."
+    />
+    <meta property="og:url" content="https://www.cpeterson.co" />
+    <meta property="og:image" content="https://www.cpeterson.co/profile.jpg" />
+    <meta property="og:site_name" content="Christian Peterson" />
+    <meta name="generator" content={Astro.generator} />
 
-        <link rel="canonical" href="https://www.cpeterson.co" />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-        />
-        <link
-            rel="apple-touch-icon"
-            href="/apple-touch-icon.png"
-            sizes="180x180"
-        />
-    </head>
-    <body>
-        <div class="container">
-            <header class="header">
-                <div class="hero">
-                    <div class="frame">
-                        <a href="/">
-                            <img
-                                src="/profile.jpg"
-                                alt="Picture of Christian"
-                            />
-                        </a>
-                    </div>
-                    <div class="title">
-                        <h1>Christian Peterson</h1>
-                        <h2>Software Engineer</h2>
-                    </div>
-                </div>
-                <nav class="hero-links">
-                    <ul>
-                        <li class="hero-link">
-                            <a href="/posts">blog.</a>
-                        </li>
-                        <li class="hero-link">
-                            <a href="https://www.linkedin.com/in/cpetersonco">
-                                linkedin.
-                            </a>
-                        </li>
-                        <li class="hero-link">
-                            <a href="https://github.com/cpetersonco">github.</a>
-                        </li>
-                        <li class="hero-link">
-                            <a href="/Resume - Christian Peterson.pdf">
-                                resume.
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-            <!-- Wrap the slot element with your existing layout templating -->
-
-            <slot />
-            <footer class="footer">
-                <p>© {new Date().getFullYear()} by Christian Peterson.</p>
-            </footer>
+    <link rel="canonical" href="https://www.cpeterson.co" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="hero">
+          <div class="frame">
+            <a href="/">
+              <Image
+                src={profile}
+                alt="Picture of Christian"
+                width="100"
+                height="100"
+              />
+            </a>
+          </div>
+          <div class="title">
+            <h1>Christian Peterson</h1>
+            <h2>Software Engineer</h2>
+          </div>
         </div>
-    </body>
+        <nav class="hero-links">
+          <ul>
+            <li class="hero-link">
+              <a href="/posts">blog.</a>
+            </li>
+            <li class="hero-link">
+              <a href="https://www.linkedin.com/in/cpetersonco">linkedin.</a>
+            </li>
+            <li class="hero-link">
+              <a href="https://github.com/cpetersonco">github.</a>
+            </li>
+            <li class="hero-link">
+              <a href="/Resume - Christian Peterson.pdf">resume.</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <slot />
+      <footer class="footer">
+        <p>© {new Date().getFullYear()} by Christian Peterson.</p>
+      </footer>
+    </div>
+  </body>
 </html>
 
 <style is:global>
-    :root {
-        --text-color: #333;
-        --main-bg-color: #fbfbf2;
-        --card-bg-color: #f1f1ea;
-        --link-main-color: #da311b;
-        --link-hover-color: #ef8071;
+  :root {
+    --text-color: #333;
+    --main-bg-color: #fbfbf2;
+    --card-bg-color: #f1f1ea;
+    --link-main-color: #da311b;
+    --link-hover-color: #ef8071;
+  }
+
+  html,
+  body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family:
+      Source Sans Pro,
+      sans-serif;
+    background-color: var(--main-bg-color);
+    color: var(--text-color);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px;
+  }
+
+  p {
+    line-height: 2;
+  }
+
+  @media (max-width: 580px) {
+    .section {
+      text-align: center;
     }
+  }
 
-    html,
-    body {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        font-family:
-            Source Sans Pro,
-            sans-serif;
-        background-color: var(--main-bg-color);
-        color: var(--text-color);
+  /* Header */
+
+  .header {
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: auto;
+  }
+
+  .frame img {
+    height: 100px;
+    width: 100px;
+    margin-right: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  @media (max-width: 580px) {
+    .frame > img {
+      margin-right: 0px;
     }
+  }
 
-    .container {
-        max-width: 1200px;
-        margin: auto;
-        padding: 25px;
+  .hero-links {
+    display: flex;
+    list-style-type: none;
+    padding-left: -40px;
+    justify-content: center;
+  }
+
+  .hero-links ul {
+    padding-left: 0px;
+  }
+
+  .hero-link {
+    display: inline-block;
+  }
+
+  .hero-link:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  @media (min-width: 580px) {
+    header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
+  }
 
-    p {
-        line-height: 2;
-    }
+  /* Breadcrumb */
 
-    @media (max-width: 580px) {
-        .section {
-            text-align: center;
-        }
-    }
+  .breadcrumb {
+    margin: 0;
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+    list-style: none;
+    align-items: flex-start;
+  }
 
-    /* Header */
+  .breadcrumb-separator {
+    display: flex;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
 
-    .header {
-        align-items: center;
-        margin-bottom: 20px;
-        width: 100%;
-        height: auto;
-    }
+  .previewImage {
+    display: flex;
+    min-height: 250px;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .hero {
-        display: flex;
-        align-items: center;
-        justify-content: left;
-        width: auto;
-    }
+  .previewImage > img {
+    width: calc(100% - 20px);
+    height: auto;
+    padding: 10px;
+  }
 
-    .frame img {
-        height: 100px;
-        width: 100px;
-        margin-right: 30px;
-        border-radius: 50%;
-        overflow: hidden;
-    }
+  /* Post Preview */
 
-    @media (max-width: 580px) {
-        .frame > img {
-            margin-right: 0px;
-        }
-    }
+  ul.post-previews {
+    list-style-type: none;
+  }
 
-    .hero-links {
-        display: flex;
-        list-style-type: none;
-        padding-left: -40px;
-        justify-content: center;
-    }
+  .post-preview {
+    margin: 0 0 30px;
+  }
 
-    .hero-links ul {
-        padding-left: 0px;
-    }
+  .post-preview .title {
+    font-size: 1.3rem;
+  }
 
-    .hero-link {
-        display: inline-block;
-    }
+  ul li time {
+    white-space: nowrap;
+  }
 
-    .hero-link:not(:last-child) {
-        margin-right: 10px;
-    }
+  time {
+    font-style: italic;
+    color: var(--text-color);
+  }
 
-    @media (min-width: 580px) {
-        header {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-    }
+  /* Link */
 
-    /* Breadcrumb */
+  a {
+    color: var(--link-main-color);
+    text-decoration-color: var(--link-main-color);
+    text-decoration-thickness: 0.3ex;
+    text-underline-offset: 0.3ex;
+  }
 
-    .breadcrumb {
-        margin: 0;
-        display: flex;
-        padding: 0;
-        flex-wrap: wrap;
-        list-style: none;
-        align-items: flex-start;
-    }
+  a:hover,
+  a:focus {
+    color: var(--link-hover-color);
+    text-decoration-color: var(--link-hover-color);
+  }
 
-    .breadcrumb-separator {
-        display: flex;
-        margin-left: 8px;
-        margin-right: 8px;
-    }
+  /* Project Previews */
 
-    .previewImage {
-        display: flex;
-        min-height: 250px;
-        justify-content: center;
-        align-items: center;
-    }
+  .project-previews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1.5rem;
+    padding-top: 20px;
+  }
 
-    .previewImage > img {
-        width: calc(100% - 20px);
-        height: auto;
-        padding: 10px;
-    }
+  .project-preview {
+    margin: 0;
+    padding: 30px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: transform 250ms;
+  }
 
-    /* Post Preview */
+  .project-preview:hover {
+    text-decoration: none;
+    color: var(--text-color);
+    transform: translateY(-5px);
+  }
 
-    ul.post-previews {
-        list-style-type: none;
-    }
+  .project-preview:visited {
+    text-decoration: none;
+    color: var(--text-color);
+  }
 
-    .post-preview {
-        margin: 0 0 30px;
-    }
+  .project-preview h1 {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
 
-    .post-preview .title {
-        font-size: 1.3rem;
-    }
+  .project-preview section {
+    font-size: 0.9rem;
+  }
 
-    ul li time {
-        white-space: nowrap;
-    }
+  .project-preview footer {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
 
-    time {
-        font-style: italic;
-        color: var(--text-color);
-    }
+  /* Experiences */
 
-    /* Link */
+  .experiences {
+    display: grid;
+    grid-gap: 1rem;
+    padding-bottom: 16px;
+  }
 
-    a {
-        color: var(--link-main-color);
-        text-decoration-color: var(--link-main-color);
-        text-decoration-thickness: 0.3ex;
-        text-underline-offset: 0.3ex;
-    }
+  .experiences li {
+    padding-left: 0.5em;
+  }
 
-    a:hover,
-    a:focus {
-        color: var(--link-hover-color);
-        text-decoration-color: var(--link-hover-color);
-    }
+  .experiences li::marker {
+    content: attr(data-icon);
+    font-size: 1.25em;
+  }
 
-    /* Project Previews */
+  .experiences > li:not(:last-child) {
+    margin-bottom: 5px;
+  }
 
-    .project-previews {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 1.5rem;
-        padding-top: 20px;
-    }
+  /* Footer */
+  .footer {
+    align-items: center;
+    margin-top: 20px;
+    height: 30px;
+  }
 
-    .project-preview {
-        margin: 0;
-        padding: 30px;
-        color: var(--text-color);
-        text-decoration: none;
-        transition: transform 250ms;
-    }
+  .footer p {
+    display: flex;
+    justify-content: center;
+  }
 
-    .project-preview:hover {
-        text-decoration: none;
-        color: var(--text-color);
-        transform: translateY(-5px);
-    }
+  .block-img {
+    margin: 0px auto;
+  }
 
-    .project-preview:visited {
-        text-decoration: none;
-        color: var(--text-color);
-    }
-
-    .project-preview h1 {
-        font-size: 1.5rem;
-        margin-top: 0;
-    }
-
-    .project-preview section {
-        font-size: 0.9rem;
-    }
-
-    .project-preview footer {
-        display: flex;
-        justify-content: right;
-        align-items: center;
-    }
-
-    /* Experiences */
-
-    .experiences {
-        display: grid;
-        grid-gap: 1rem;
-        padding-bottom: 16px;
-    }
-
-    .experiences li {
-        padding-left: 0.5em;
-    }
-
-    .experiences li::marker {
-        content: attr(data-icon);
-        font-size: 1.25em;
-    }
-
-    .experiences > li:not(:last-child) {
-        margin-bottom: 5px;
-    }
-
-    /* Footer */
-    .footer {
-        align-items: center;
-        margin-top: 20px;
-        height: 30px;
-    }
-
-    .footer p {
-        display: flex;
-        justify-content: center;
-    }
-
-    .block-img {
-        margin: 0px auto;
-    }
-
-    .block-img > img {
-        width: 100%;
-        height: auto;
-    }
+  .block-img > img {
+    width: 100%;
+    height: auto;
+  }
 </style>
