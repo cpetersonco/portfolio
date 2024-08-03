@@ -1,128 +1,182 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content'
 
-import Document from "../layouts/Document.astro";
+import Document from '../layouts/Document.astro'
 
-let posts = await getCollection("posts");
+let posts = await getCollection('posts')
 posts = posts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)
 
 const projects = [
-  {
-    title: "Notes",
-    subtitle: "React, Firebase, etc.",
-    link: "https://notes.cpeterson.co",
-    repo: "https://github.com/cpetersonco/notes",
-    description:
-      "A note taking app featuring email authentication and note creation using the open source Quill editor",
-    backgroundColor: "#38A3E5",
-  },
-  {
-    title: "Pokemon Tracker",
-    subtitle: "React, REST API, etc.",
-    link: "https://pokemon.cpeterson.co",
-    repo: "https://github.com/cpetersonco/pokemon-tracker",
-    description: "Catch 'em all! Search and capture pokemon using the PokeAPI.",
-    backgroundColor: "#ffca3a",
-  },
-  {
-    title: "Loft Cinema Web Calendar",
-    subtitle: "Node.js, Cheerio, axios, ics",
-    link: "webcal://loft.cpeterson.co/event.ics",
-    repo: "https://github.com/cpetersonco/Loft-Cinema-API",
-    description:
-      "A publically-served iCal calendar for the local cinema, Loft Cinema.",
-    backgroundColor: "#FF6B70",
-  },
-];
+    {
+        title: 'Notes',
+        subtitle: 'React, Firebase, etc.',
+        link: 'https://notes.cpeterson.co',
+        repo: 'https://github.com/cpetersonco/notes',
+        description:
+            'A note taking app featuring email authentication and note creation using the open source Quill editor',
+        backgroundColor: '#38A3E5',
+    },
+    {
+        title: 'Pokemon Tracker',
+        subtitle: 'React, REST API, etc.',
+        link: 'https://pokemon.cpeterson.co',
+        repo: 'https://github.com/cpetersonco/pokemon-tracker',
+        description:
+            "Catch 'em all! Search and capture pokemon using the PokeAPI.",
+        backgroundColor: '#ffca3a',
+    },
+    {
+        title: 'Loft Cinema Web Calendar',
+        subtitle: 'Node.js, Cheerio, axios, ics',
+        link: 'webcal://loft.cpeterson.co/event.ics',
+        repo: 'https://github.com/cpetersonco/Loft-Cinema-API',
+        description:
+            'A publically-served iCal calendar for the local cinema, Loft Cinema.',
+        backgroundColor: '#FF6B70',
+    },
+]
+
+const experiences = [
+    {
+        emoji: '🦄',
+        title: 'Software Engineer I',
+        company: 'Benefitfocus',
+        link: 'https://www.benefitfocus.com/',
+        tenure: '(Jan 2022 - Feb 2024)',
+    },
+
+    {
+        emoji: '👶',
+        title: 'Software Engineer Intern',
+        company: 'Benefitfocus',
+        link: 'https://www.benefitfocus.com/',
+        tenure: '(May 2021 - Dec 2021)',
+    },
+    {
+        emoji: '💻',
+        title: 'Support Analyst Intern ',
+        company: 'Community Medical Services',
+        link: 'https://communitymedicalservices.org/',
+        tenure: '(Jun 2017 - May 2021)',
+    },
+]
 ---
 
 <Document title="Christian Peterson">
-  <p id="about">
-    <strong>Hi there, I&apos;m Christian!</strong> I&apos;m a Full Stack Software
-    Developer with 2+ years of industry experience. A recent graduate from the University
-    of Arizona with a Bachelor of Science in Computer Science, my passion for programming
-    began with web development, and has since expanded into various areas of software
-    development. I enjoy building full-stack web applications with an emphasis on
-    user experience. I&apos;m excited to continue growing my skillset and exploring
-    new technologies. In my free time, I make music, read, play video games, and
-    watch movies. Join me on my journey!
-  </p>
-  <h1 class="section">experience</h1>
-  <ul class="experiences">
-    <li data-icon="🦄">
-      <strong>Software Engineer I</strong> at{" "}
-      <a class="link" href="https://www.benefitfocus.com">Benefitfocus</a>
-      <span class="subtext"> (January 2022 - February 2024)</span>
-    </li>
-    <li data-icon="👶">
-      <strong>Software Engineer Intern</strong> at{" "}
-      <a class="link" href="https://www.benefitfocus.com/">Benefitfocus</a>
-      <span class="subtext">(May 2021 - December 2021)</span>
-    </li>
-    <li data-icon="💻">
-      <strong>Support Analyst Intern</strong> at{" "}
-      <a class="link" href="https://communitymedicalservices.org/"
-        >Community Medical Services</a
-      >
-      <span class="subtext">(June 2017 - May 2021)</span>
-    </li>
-  </ul>
-  <h1 id="blog" class="section">blog</h1>
-  <ul class="post-previews">
-    {
-      posts &&
-        posts.map((post) => {
-          const {
-            slug,
-            data: { title, description, pubDate },
-          } = post;
-          const href = `/posts/${slug}`;
+    <p class="text-2xl pb-4">
+        <strong>Hi there, I&apos;m Christian! </strong>
+    </p>
+    <p class="text-xl pb-4">
+        My passion for programming began with web development, and has since
+        expanded across the stack into various areas of software development. I
+        enjoy building full-stack web applications with an emphasis on user
+        experience. I love to play chess, watch movies and spend time with my
+        dog. I live in sunny Tucson, Arizona. Join me on my journey!
+    </p>
+    <h1 class="text-4xl font-bold pb-4">experience</h1>
+    <ul class="grid pb-4 gap-4 pl-2 list-none">
+        {
+            experiences &&
+                experiences.map((experience) => {
+                    const { emoji, title, company, link, tenure } = experience
+                    return (
+                        <li
+                            class={`text-xl pl-4 -indent-3 before:content-['${emoji}']`}>
+                            <strong>{title}</strong> at{' '}
+                            <a
+                                class="inline-flex ml-3 items-center decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                                href={link}>
+                                {company}
+                                <svg
+                                    class="w-4 h-4 rtl:rotate-180"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        id="Vector"
+                                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </a>
+                            <span class="text-gray-700 italic"> {tenure}</span>
+                        </li>
+                    )
+                })
+        }
+    </ul>
+    <h1 class="text-4xl font-bold pb-4">blog</h1>
+    <ul class="list-none">
+        {
+            posts &&
+                posts.map((post) => {
+                    const {
+                        slug,
+                        data: { title, description, pubDate },
+                    } = post
+                    const href = `/posts/${slug}`
 
-          return (
-            <li class="post-preview">
-              <a class="title" href={href} data-astro-prefetch>
-                {title}
-              </a>
-              <time datetime={pubDate.toISOString()}>
-                {pubDate.toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
-              <br />
-              <p>{description}</p>
-            </li>
-          );
-        })
-    }
-  </ul>
-  <h1 id="projects" class="section">projects</h1>
-  <div class="project-previews">
-    {
-      projects &&
-        projects.map((project) => {
-          const { title, subtitle, link, description, backgroundColor } =
-            project;
+                    return (
+                        <li class="text-xl pb-4">
+                            <a
+                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                                href={href}
+                                data-astro-prefetch>
+                                {title}
+                            </a>
+                            <time
+                                class="italic text-[var(--text-color)] whitespace-nowrap"
+                                datetime={pubDate.toISOString()}>
+                                {pubDate.toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                })}
+                            </time>
+                            <br />
+                            <p>{description}</p>
+                        </li>
+                    )
+                })
+        }
+    </ul>
+    <h1 class="text-4xl font-bold pb-4">projects</h1>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4">
+        {
+            projects &&
+                projects.map((project) => {
+                    const {
+                        title,
+                        subtitle,
+                        link,
+                        description,
+                        backgroundColor,
+                    } = project
 
-          return (
-            <a class="project-preview" href={link} style={{ backgroundColor }}>
-              <article>
-                <header>
-                  <h1>{title}</h1>
-                </header>
-                <section>
-                  <p>{description}</p>
-                </section>
-                <footer>
-                  <sub>{subtitle}</sub>
-                </footer>
-              </article>
-            </a>
-          );
-        })
-    }
-  </div>
+                    return (
+                        <a
+                            class="p-6 no-underline text-black transition duration-250 transform hover:no-underline hover:text-black hover:translate-y-[-5px] visited:no-underline visited:text-[color:var(--text-color)]"
+                            href={link}
+                            style={{ backgroundColor }}>
+                            <article>
+                                <header>
+                                    <h2 class="text-2xl font-bold">{title}</h2>
+                                </header>
+                                <section>
+                                    <p class="text-base">{description}</p>
+                                </section>
+                                <footer class="flex justify-end">
+                                    <sub class="text-sm">{subtitle}</sub>
+                                </footer>
+                            </article>
+                        </a>
+                    )
+                })
+        }
+    </div>
 </Document>

@@ -1,389 +1,230 @@
 ---
-import { Image } from "astro:assets";
-import profile from "../assets/profile.jpg";
-import { ViewTransitions } from "astro:transitions";
+import { Image } from 'astro:assets'
+import profile from '../assets/profile.jpg'
+import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
-  title: string;
+    title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>{title}</title>
 
-    <meta name="robots" content="index,follow" />
-    <meta name="googlebot" content="index,follow" />
+        <meta
+            name="robots"
+            content="index,follow"
+        />
+        <meta
+            name="googlebot"
+            content="index,follow"
+        />
 
-    <meta name="description" content="Christian Peterson, Software Engineer." />
-    <meta property="og:title" content="Christian Peterson" />
-    <meta
-      property="og:description"
-      content="Christian Peterson, Software Engineer."
-    />
-    <meta property="og:url" content="https://www.cpeterson.co" />
-    <meta property="og:image" content="https://www.cpeterson.co/profile.jpg" />
-    <meta property="og:site_name" content="Christian Peterson" />
-    <meta name="generator" content={Astro.generator} />
+        <meta
+            name="description"
+            content="Christian Peterson, Software Engineer."
+        />
+        <meta
+            property="og:title"
+            content="Christian Peterson"
+        />
+        <meta
+            property="og:description"
+            content="Christian Peterson, Software Engineer."
+        />
+        <meta
+            property="og:url"
+            content="https://www.cpeterson.co"
+        />
+        <meta
+            property="og:image"
+            content="https://www.cpeterson.co/profile.jpg"
+        />
+        <meta
+            property="og:site_name"
+            content="Christian Peterson"
+        />
+        <meta
+            name="generator"
+            content={Astro.generator}
+        />
 
-    <link rel="canonical" href="https://www.cpeterson.co" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-    <ViewTransitions />
-  </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <div class="hero">
-          <div class="frame">
-            <a href="/" data-astro-prefetch>
-              <Image
-                src={profile}
-                alt="Picture of Christian"
-                width="100"
-                height="100"
-              />
-            </a>
-          </div>
-          <div class="title">
-            <h1>Christian Peterson</h1>
-            <h2>Software Engineer</h2>
-          </div>
-        </div>
-        <nav class="hero-links">
-          <ul>
-            <li class="hero-link">
-              <a href="/posts" data-astro-prefetch>blog.</a>
-            </li>
-            <li class="hero-link">
-              <a href="https://www.linkedin.com/in/cpetersonco">linkedin.</a>
-            </li>
-            <li class="hero-link">
-              <a href="https://github.com/cpetersonco">github.</a>
-            </li>
-            <li class="hero-link">
-              <a href="/Resume - Christian Peterson.pdf">resume.</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <slot />
-      <footer class="footer">
-        <p>© {new Date().getFullYear()} by Christian Peterson.</p>
-      </footer>
-    </div>
-    <script async defer src="https://scripts.withcabin.com/hello.js"></script>
-    <style is:global>
-      /*
-  1. Use a more-intuitive box-sizing model.
-*/
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-      /*
-  2. Remove default margin
-*/
-      * {
-        margin: 0;
-      }
-      /*
-  Typographic tweaks!
-  3. Add accessible line-height
-  4. Improve text rendering
-*/
-      body {
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-      }
-      /*
-  5. Improve media defaults
-*/
-      img,
-      picture,
-      video,
-      canvas,
-      svg {
-        display: block;
-        max-width: 100%;
-      }
-      /*
-  6. Remove built-in form typography styles
-*/
-      input,
-      button,
-      textarea,
-      select {
-        font: inherit;
-      }
-      /*
-  7. Avoid text overflows
-*/
-      p,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        overflow-wrap: break-word;
-      }
-      /*
-  8. Create a root stacking context
-*/
-      #root,
-      #__next {
-        isolation: isolate;
-      }
+        <link
+            rel="canonical"
+            href="https://www.cpeterson.co"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="/apple-touch-icon.png"
+            sizes="180x180"
+        />
+        <ViewTransitions />
+    </head>
+    <body
+        class="font-sans bg-[var(--main-bg-color)] text-[var(--text-color)] max-w-[1100px] m-auto p-4">
+        <header class="items-center py-[20px] w-full h-auto">
+            <nav class="flex -pl-10 pb-8 text-xl">
+                <ul class="p-0 flex w-full justify-between">
+                    <div class="hidden md:block">
+                        <li class="inline-block mr-2">
+                            <a
+                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                                href="/"
+                                data-astro-prefetch
+                                >home.</a
+                            >
+                        </li>
+                    </div>
+                    <div class="m-auto md:m-0">
+                        <li class="md:hidden inline-block mr-2">
+                            <a
+                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                                href="/"
+                                data-astro-prefetch
+                                >home.</a
+                            >
+                        </li>
+                        <li class="inline-block mr-2">
+                            <a
+                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                                href="/posts"
+                                data-astro-prefetch
+                                >blog.</a
+                            >
+                        </li>
+                        <li class="inline-block mr-2">
+                            <a
+                                class="inline-flex items-center decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                                href="https://www.linkedin.com/in/cpetersonco">
+                                linkedin.
+                                <svg
+                                    class="w-4 h-4 rtl:rotate-180"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        id="Vector"
+                                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    ></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="inline-block mr-2">
+                            <a
+                                class="inline-flex items-center decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                                href="https://github.com/cpetersonco"
+                                >github.
 
-      :root {
-        --text-color: #333;
-        --main-bg-color: #fbfbf2;
-        --card-bg-color: #f1f1ea;
-        --link-main-color: #da311b;
-        --link-hover-color: #ef8071;
-      }
+                                <svg
+                                    class="w-4 h-4 rtl:rotate-180"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        id="Vector"
+                                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    ></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="inline-block mr-2">
+                            <a
+                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                                href="/resume"
+                                >resume.</a
+                            >
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+            <div
+                class="flex flex-col justify-between lg:flex-row text-center lg:text-justify flex-wrap">
+                <div>
+                    <a
+                        href="/"
+                        data-astro-prefetch>
+                        <Image
+                            class="p-0 m-auto min-w-[300px] lg:min-w-[200px] rounded-[50%] overflow-hidden"
+                            src={profile}
+                            alt="Picture of Christian"
+                            width="150"
+                            height="150"
+                        />
+                    </a>
+                </div>
+                <div>
+                    <h1 class="text-6xl lg:text-8xl font-bold">
+                        Christian Peterson
+                    </h1>
+                    <h2 class="text-4xl lg:text-6xl font-bold">
+                        Software Engineer
+                    </h2>
+                </div>
+            </div>
+        </header>
+        <slot />
+        <footer class="items-center mt-4 h-8">
+            <p class="flex justify-center">
+                © {new Date().getFullYear()} by Christian Peterson.
+            </p>
+        </footer>
+        <script
+            async
+            defer
+            src="https://scripts.withcabin.com/hello.js"
+        ></script>
+        <style is:global>
+            :root {
+                --text-color: #333;
+                --main-bg-color: #fbfbf2;
+                --card-bg-color: #f1f1ea;
+                --link-main-color: #da311b;
+                --link-hover-color: #ef8071;
+            }
 
-      body {
-        font-family:
-          Source Sans Pro,
-          sans-serif;
-        background-color: var(--main-bg-color);
-        color: var(--text-color);
-      }
+            /* Link */
 
-      .container {
-        max-width: 1200px;
-        margin: auto;
-        padding: 0px 24px;
-      }
+            a {
+                color: var(--link-main-color);
+                text-decoration-color: var(--link-main-color);
+                text-decoration-thickness: 0.3ex;
+                text-underline-offset: 0.3ex;
+            }
 
-      p {
-        line-height: 2;
-      }
-
-      @media (max-width: 580px) {
-        .section {
-          text-align: center;
-        }
-      }
-
-      /* Header */
-
-      .header {
-        align-items: center;
-        padding: 20px 0px;
-        width: 100%;
-        height: auto;
-      }
-
-      .hero {
-        display: flex;
-        align-items: center;
-        justify-content: left;
-        width: auto;
-      }
-
-      .frame img {
-        height: 100px;
-        width: 100px;
-        margin-right: 30px;
-        border-radius: 50%;
-        overflow: hidden;
-      }
-
-      @media (max-width: 580px) {
-        .frame > img {
-          margin-right: 0px;
-        }
-      }
-
-      .hero-links {
-        display: flex;
-        list-style-type: none;
-        padding-left: -40px;
-        justify-content: center;
-      }
-
-      .hero-links ul {
-        padding-left: 0px;
-      }
-
-      .hero-link {
-        display: inline-block;
-      }
-
-      .hero-link:not(:last-child) {
-        margin-right: 10px;
-      }
-
-      @media (min-width: 580px) {
-        header {
-          display: flex;
-          justify-content: space-between;
-          flex-wrap: wrap;
-        }
-      }
-
-      /* Breadcrumb */
-
-      .breadcrumb {
-        margin: 0;
-        display: flex;
-        padding: 0;
-        flex-wrap: wrap;
-        list-style: none;
-        align-items: flex-start;
-      }
-
-      .breadcrumb-separator {
-        display: flex;
-        margin-left: 8px;
-        margin-right: 8px;
-      }
-
-      .previewImage {
-        display: flex;
-        min-height: 250px;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .previewImage > img {
-        width: calc(100% - 20px);
-        height: auto;
-        padding: 10px;
-      }
-
-      /* Post Preview */
-
-      ul.post-previews {
-        list-style-type: none;
-      }
-
-      .post-preview {
-        margin: 0 0 8px;
-      }
-
-      .post-preview .title {
-        font-size: 1.3rem;
-      }
-
-      ul li time {
-        white-space: nowrap;
-      }
-
-      time {
-        font-style: italic;
-        color: var(--text-color);
-      }
-
-      /* Link */
-
-      a {
-        color: var(--link-main-color);
-        text-decoration-color: var(--link-main-color);
-        text-decoration-thickness: 0.3ex;
-        text-underline-offset: 0.3ex;
-      }
-
-      a:hover,
-      a:focus {
-        color: var(--link-hover-color);
-        text-decoration-color: var(--link-hover-color);
-      }
-
-      /* Project Previews */
-
-      .project-previews {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 1.5rem;
-        padding-top: 20px;
-      }
-
-      .project-preview {
-        margin: 0;
-        padding: 30px;
-        color: var(--text-color);
-        text-decoration: none;
-        transition: transform 250ms;
-      }
-
-      .project-preview:hover {
-        text-decoration: none;
-        color: var(--text-color);
-        transform: translateY(-5px);
-      }
-
-      .project-preview:visited {
-        text-decoration: none;
-        color: var(--text-color);
-      }
-
-      .project-preview h1 {
-        font-size: 1.5rem;
-        margin-top: 0;
-      }
-
-      .project-preview section {
-        font-size: 0.9rem;
-      }
-
-      .project-preview footer {
-        display: flex;
-        justify-content: right;
-        align-items: center;
-      }
-
-      /* Experiences */
-
-      .experiences {
-        display: grid;
-        grid-gap: 1rem;
-        padding-bottom: 16px;
-      }
-
-      .experiences li {
-        padding-left: 0.5em;
-      }
-
-      .experiences li::marker {
-        content: attr(data-icon);
-        font-size: 1.25em;
-      }
-
-      .experiences > li:not(:last-child) {
-        margin-bottom: 5px;
-      }
-
-      /* Footer */
-      .footer {
-        align-items: center;
-        margin-top: 20px;
-        height: 30px;
-      }
-
-      .footer p {
-        display: flex;
-        justify-content: center;
-      }
-
-      .block-img {
-        margin: 0px auto;
-      }
-
-      .block-img > img {
-        width: 100%;
-        height: auto;
-      }
-    </style>
-  </body>
+            a:hover,
+            a:focus {
+                color: var(--link-hover-color);
+                text-decoration-color: var(--link-hover-color);
+            }
+        </style>
+    </body>
 </html>
