@@ -14,16 +14,21 @@ export async function getStaticPaths() {
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props
 const { Content } = await entry.render()
+
+const data = entry.data
+const { title, description, pubDate } = data
 ---
 
-<Document title={entry.data.title}>
-    <h1 class="text-4xl font-bold pb-1">{entry.data.title}</h1>
+<Document
+    title={title}
+    description={description}>
+    <h1 class="text-4xl font-bold pb-1">{title}</h1>
     <span class="pb-4 italic block">
         <time
             class="italic text-lg text-[var(--text-color)] whitespace-nowrap"
-            datetime={entry.data.pubDate.toISOString()}>
+            datetime={pubDate.toISOString()}>
             {
-                entry.data.pubDate.toLocaleDateString('en-US', {
+                pubDate.toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
