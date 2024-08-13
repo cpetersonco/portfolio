@@ -164,6 +164,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"using-django-with-turborepo.md": {
+	id: "using-django-with-turborepo.md";
+  slug: "using-django-with-turborepo";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 };
 
 	};
