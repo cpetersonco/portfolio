@@ -37,23 +37,31 @@ const { title, description } = Astro.props
         />
         <meta
             property="og:title"
-            content="Christian Peterson"
+            content={title}
         />
         <meta
             property="og:description"
-            content="Christian Peterson, Software Engineer."
+            content={description || 'Christian Peterson, Software Engineer.'}
         />
         <meta
             property="og:url"
-            content="https://www.cpeterson.co"
+            content={new URL(Astro.url.pathname, Astro.site).toString()}
         />
         <meta
             property="og:image"
-            content="https://www.cpeterson.co/profile.jpg"
+            content={new URL('/og-image.jpg', Astro.site).toString()}
         />
         <meta
             property="og:site_name"
             content="Christian Peterson"
+        />
+        <meta
+            property="og:type"
+            content="website"
+        />
+        <meta
+            name="twitter:card"
+            content="summary"
         />
         <meta
             name="generator"
@@ -62,7 +70,7 @@ const { title, description } = Astro.props
 
         <link
             rel="canonical"
-            href="https://www.cpeterson.co"
+            href={new URL(Astro.url.pathname, Astro.site).toString()}
         />
         <link
             rel="icon"
