@@ -2,18 +2,21 @@
 
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
 
 # production
 /dist
+
+# astro
+.astro/
+
+# next.js (legacy)
+/.next/
+
+# claude
+.claude/
+
+# superpowers plans
+docs/
 
 # misc
 .DS_Store
