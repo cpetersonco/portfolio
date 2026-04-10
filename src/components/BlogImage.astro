@@ -1,39 +1,44 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets'
 
-const { src, alt, caption, ...attrs } = Astro.props;
+const { src, alt, caption, ...attrs } = Astro.props
 ---
 
 <figure class="figure">
-  <Image class="image" src={src} alt={alt} {...attrs} />
-  {
-    caption && (
-      <figcaption class="caption">
-        <i>{caption}</i>
-      </figcaption>
-    )
-  }
+    <Image
+        class="image"
+        src={src}
+        alt={alt}
+        {...attrs}
+    />
+    {
+        caption && (
+            <figcaption class="caption">
+                <i>{caption}</i>
+            </figcaption>
+        )
+    }
 </figure>
 
 <style>
-  .figure {
-    width: 100%;
-    margin: 0;
-    padding-top: 8px;
-  }
+    .figure {
+        width: 100%;
+        margin: 0;
+        padding-top: 8px;
+    }
 
-  .image {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 0px auto;
-  }
+    .image {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0px auto;
+    }
 
-  .caption {
-    color: #565656;
-    font-size: 0.9rem;
-    width: fit-content;
-    margin: 0px auto;
-    padding: 0.5rem 0px;
-  }
+    .caption {
+        color: #565656;
+        font-size: 0.9rem;
+        width: fit-content;
+        margin: 0px auto;
+        padding: 0.5rem 0px;
+    }
 </style>

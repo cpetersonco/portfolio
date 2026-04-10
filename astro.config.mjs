@@ -1,13 +1,13 @@
-import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
-import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from 'astro/config'
+import mdx from '@astrojs/mdx'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx()],
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  prefetch: true,
-  site: "https://www.cpeterson.co",
-});
+    integrations: [mdx()],
+    vite: {
+        plugins: [tailwindcss()],
+    },
+    prefetch: true,
+    site: 'https://www.cpeterson.co',
+})
