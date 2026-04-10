@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 
 import Document from '../../layouts/Document.astro'
 
@@ -7,13 +7,13 @@ import Document from '../../layouts/Document.astro'
 export async function getStaticPaths() {
     const blogEntries = await getCollection('posts')
     return blogEntries.map((entry) => ({
-        params: { slug: entry.slug },
+        params: { slug: entry.id.replace(/\.(md|mdx)$/, '') },
         props: { entry },
     }))
 }
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props
-const { Content } = await entry.render()
+const { Content } = await render(entry)
 
 const data = entry.data
 const { title, description, pubDate } = data
