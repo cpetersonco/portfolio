@@ -24,7 +24,7 @@ posts = posts.sort(
                     return (
                         <li class="text-xl pb-4">
                             <a
-                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                                class="block decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
                                 href={href}
                                 data-astro-prefetch>
                                 {title}
@@ -38,8 +38,7 @@ posts = posts.sort(
                                     day: 'numeric',
                                 })}
                             </time>
-                            <br />
-                            <p>{description}</p>
+                            <p class="mt-1">{description}</p>
                         </li>
                     )
                 })
