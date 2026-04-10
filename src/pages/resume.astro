@@ -2,8 +2,15 @@
 import Document from '../layouts/Document.astro'
 ---
 
-<object
-    data="/Resume-Christian-Peterson.pdf"
-    type="application/pdf"
-    style="min-height:100vh;width:100%"
-></object>
+<Document title="Resume | Christian Peterson">
+    <object
+        data="/Resume-Christian-Peterson.pdf"
+        type="application/pdf"
+        style="min-height:100vh;width:100%"
+    >
+        <p>
+            Your browser does not support inline PDFs.
+            <a href="/Resume-Christian-Peterson.pdf">Download the resume</a>.
+        </p>
+    </object>
+</Document>
