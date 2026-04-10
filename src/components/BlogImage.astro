@@ -11,13 +11,7 @@ const { src, alt, caption, ...attrs } = Astro.props
         alt={alt}
         {...attrs}
     />
-    {
-        caption && (
-            <figcaption class="caption">
-                <i>{caption}</i>
-            </figcaption>
-        )
-    }
+    {caption && <figcaption class="caption">{caption}</figcaption>}
 </figure>
 
 <style>
@@ -37,6 +31,7 @@ const { src, alt, caption, ...attrs } = Astro.props
     .caption {
         color: #565656;
         font-size: 0.9rem;
+        font-style: italic;
         width: fit-content;
         margin: 0px auto;
         padding: 0.5rem 0px;
