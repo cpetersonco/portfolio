@@ -16,10 +16,10 @@ posts = posts.sort(
             posts &&
                 posts.map((post) => {
                     const {
-                        slug,
+                        id,
                         data: { title, description, pubDate },
                     } = post
-                    const href = `/blog/${slug}`
+                    const href = `/blog/${id.replace(/\.(md|mdx)$/, '')}`
 
                     return (
                         <li class="text-xl pb-4">
