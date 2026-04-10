@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "lint": "eslint src"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
@@ -18,9 +20,6 @@
     "sharp": "^0.33.2",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.3.3"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",

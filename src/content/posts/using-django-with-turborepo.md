@@ -30,7 +30,7 @@ Inside `server`, add a `package.json` with the following contents:
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "preinstall": "python -m pip install -r requirements.txt"
+        "preinstall": "python -m pip install -r requirements.txt",
         "start": "python manage.py runserver",
         "migrate": "python manage.py migrate",
         "makemigrations": "python manage.py makemigrations",
