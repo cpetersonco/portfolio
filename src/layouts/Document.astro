@@ -95,85 +95,83 @@ const { title, description } = Astro.props
         class="font-sans bg-[var(--main-bg-color)] text-[var(--text-color)] max-w-[1100px] m-auto p-4">
         <header class="items-center py-[20px] w-full h-auto">
             <nav class="flex -pl-10 pb-8 text-xl">
-                <ul class="p-0 flex w-full justify-between">
-                    <div class="hidden md:block">
-                        <li class="inline-block mr-2">
-                            <a
-                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
-                                href="/"
-                                data-astro-prefetch
-                                >home.</a
-                            >
-                        </li>
-                    </div>
-                    <div class="m-auto md:m-0">
-                        <li class="md:hidden inline-block mr-2">
-                            <a
-                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
-                                href="/"
-                                data-astro-prefetch
-                                >home.</a
-                            >
-                        </li>
-                        <li class="inline-block mr-2">
-                            <a
-                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
-                                href="/blog"
-                                data-astro-prefetch
-                                >blog.</a
-                            >
-                        </li>
-                        <li class="inline-block mr-2">
-                            <a
-                                class="inline-flex items-center decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
-                                href="https://www.linkedin.com/in/cpetersonco">
-                                linkedin.
-                                <svg
-                                    class="w-4 h-4 rtl:rotate-180"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        id="Vector"
-                                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    ></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="inline-block mr-2">
-                            <a
-                                class="inline-flex items-center decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
-                                href="https://github.com/cpetersonco"
-                                >github.
-
-                                <svg
-                                    class="w-4 h-4 rtl:rotate-180"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        id="Vector"
-                                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    ></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="inline-block mr-2">
-                            <a
-                                class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
-                                href="/resume"
-                                >resume.</a
-                            >
-                        </li>
-                    </div>
+                <ul class="p-0 flex w-full justify-between list-none">
+                    <li class="hidden md:inline-block mr-2">
+                        <a
+                            class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                            href="/"
+                            data-astro-prefetch
+                            >home.</a
+                        >
+                    </li>
+                    <li class="m-auto md:m-0 md:hidden inline-block mr-2">
+                        <a
+                            class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                            href="/"
+                            data-astro-prefetch
+                            >home.</a
+                        >
+                    </li>
+                    <li class="inline-block mr-2">
+                        <a
+                            class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                            href="/blog"
+                            data-astro-prefetch
+                            >blog.</a
+                        >
+                    </li>
+                    <li class="inline-block mr-2">
+                        <a
+                            class="inline-flex items-center decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                            href="https://www.linkedin.com/in/cpetersonco"
+                            rel="noopener noreferrer">
+                            linkedin.
+                            <svg
+                                class="w-4 h-4 rtl:rotate-180"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true">
+                                <path
+                                    d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="inline-block mr-2">
+                        <a
+                            class="inline-flex items-center decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                            href="https://github.com/cpetersonco"
+                            rel="noopener noreferrer"
+                            >github.
+                            <svg
+                                class="w-4 h-4 rtl:rotate-180"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true">
+                                <path
+                                    d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="inline-block mr-2">
+                        <a
+                            class="decoration-[var(--link-main-color)] underline-offset-[0.3ex] decoration-[0.3ex] underline"
+                            href="/resume"
+                            data-astro-prefetch
+                            >resume.</a
+                        >
+                    </li>
                 </ul>
             </nav>
             <div
