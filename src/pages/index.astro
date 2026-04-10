@@ -174,17 +174,14 @@ const experiences = [
                         <a
                             class="p-6 no-underline text-black transition duration-250 transform hover:no-underline hover:text-black hover:translate-y-[-5px] visited:no-underline visited:text-[color:var(--text-color)]"
                             href={link}
+                            aria-label={title}
                             rel="noopener noreferrer"
                             style={{ backgroundColor }}>
-                            <article>
-                                <header>
-                                    <h2 class="text-2xl font-bold">{title}</h2>
-                                </header>
-                                <section>
-                                    <p class="text-base">{description}</p>
-                                </section>
+                            <article aria-hidden="true">
+                                <h2 class="text-2xl font-bold">{title}</h2>
+                                <p class="text-base">{description}</p>
                                 <footer class="flex justify-end">
-                                    <sub class="text-sm">{subtitle}</sub>
+                                    <span class="text-sm">{subtitle}</span>
                                 </footer>
                             </article>
                         </a>
